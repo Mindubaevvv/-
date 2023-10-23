@@ -23,6 +23,7 @@ namespace Laba_num_one.My_Classes
             Horizontal = horizontal;
             Vertical = vertical;
             Bitmap = bitmap;
+            Bitmap = bitmap;
             Color = color;
         }
 
