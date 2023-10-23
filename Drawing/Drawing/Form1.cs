@@ -5,6 +5,7 @@ namespace Drawing
         public Form1()
         {
             InitializeComponent();
+            g = this.CreateGraphics();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -44,14 +45,23 @@ namespace Drawing
             // Draw ellipse to screen
             e.Graphics.DrawEllipse(blackkPenn, x1, y1, width1, height1);
 
-           
+
         }
 
-        
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        Point click;
+        Graphics g;
+
+        private void btnDraw_Click(object sender, EventArgs e)
         {
 
-            
+
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            click = e.Location;
+            Pen blackkPen = new Pen(Color.Chocolate, 25);
+            g.DrawRectangle(blackkPen, click.X, click.Y, 150, 200);
         }
     }
 }

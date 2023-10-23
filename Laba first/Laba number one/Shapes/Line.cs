@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Laba_number_one.Shapes
-{ 
+{
     internal class Line
     {
         private int X;
@@ -15,14 +15,21 @@ namespace Laba_number_one.Shapes
         private Bitmap Bitmap;
         private Color Color;
 
-        public Line(int x, int y, Bitmap bitmap, Color color)
+        public Line(int x, int y, Bitmap bitmap, Color color) : this(x, y, color)
+        {
+            Bitmap = bitmap;
+        }
+        public Line(int x, int y, Color color)
         {
             X = x;
             Y = y;
-            Bitmap = bitmap;
             Color = color;
         }
-
+        public Line(string x, string y)
+        {
+            X = Convert.ToInt32(x);
+            Y = Convert.ToInt32(y);             
+        }
         public void SetColor(Color color)
         {
             Color = color;

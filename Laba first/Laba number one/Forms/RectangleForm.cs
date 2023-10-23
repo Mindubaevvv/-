@@ -14,8 +14,7 @@ namespace Laba_number_one
         {
             InitializeComponent();
         }
-
-        Graphics g;
+        
         private void RectangleForm_Load(object sender, EventArgs e)
         {
 

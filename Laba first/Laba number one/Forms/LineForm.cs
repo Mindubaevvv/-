@@ -1,12 +1,6 @@
 ﻿using Laba_number_one.Shapes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -14,9 +8,12 @@ namespace Laba_num_one
 {
     public partial class LineForm : Form
     {
+        Graphics graphics;
+        Line line;
         public LineForm()
         {
             InitializeComponent();
+            graphics = this.pctBox.CreateGraphics();
         }
 
 
@@ -29,12 +26,18 @@ namespace Laba_num_one
         {
             var x = InputX.Text;
             var y = InputY.Text;
+            var l = 500;//InputLenght.Text;4
+            //line = new Line();
+            var pointA = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
+            var pointB = new Point(Convert.ToInt32(x) + Convert.ToInt32(l), Convert.ToInt32(y));
+            Pen blackkPen = new Pen(Color.Chocolate, 15);
+            graphics.DrawLine(blackkPen, pointA, pointB);
 
         }
 
         private void LineForm_Load(object sender, EventArgs e)
         {
-        
+
         }
     }
 }

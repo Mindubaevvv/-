@@ -28,13 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            btnDraw = new Button();
             SuspendLayout();
+            // 
+            // btnDraw
+            // 
+            btnDraw.Location = new Point(1304, 438);
+            btnDraw.Name = "btnDraw";
+            btnDraw.Size = new Size(188, 58);
+            btnDraw.TabIndex = 1;
+            btnDraw.Text = "Draw";
+            btnDraw.UseVisualStyleBackColor = true;
+            btnDraw.Click += btnDraw_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1700, 922);
+            Controls.Add(btnDraw);
+            Margin = new Padding(6);
             Name = "Form1";
             Text = "Form1";
             Paint += Form1_Paint;
@@ -43,5 +56,8 @@
         }
 
         #endregion
+
+        private Button button1;
+        private Button btnDraw;
     }
 }
