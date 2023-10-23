@@ -33,6 +33,10 @@ namespace Laba_number_one.Shapes
             X += X;
             Y += Y;
         }
+        public void GetX()
+        {
+            ///
+        }
 
     }
 }
