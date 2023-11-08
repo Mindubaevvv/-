@@ -111,6 +111,7 @@
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "CaptionForm";
             Text = "Form1";
+            FormClosing += CaptionForm_FormClosing;
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

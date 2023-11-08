@@ -26,6 +26,7 @@ namespace Laba_num_one.My_Classes
         public void SetColor(Color color)
         {
             Color = color;
+
         }
 
         public void SetRadius(int radius)

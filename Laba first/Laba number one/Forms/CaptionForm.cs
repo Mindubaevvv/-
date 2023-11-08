@@ -55,5 +55,10 @@ namespace Laba_num_one
             var rectangle = new RectangleForm();
             rectangle.Show();
         }
+
+        private void CaptionForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

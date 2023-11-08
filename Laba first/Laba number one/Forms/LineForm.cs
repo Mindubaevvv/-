@@ -39,5 +39,10 @@ namespace Laba_num_one
         {
 
         }
+
+        private void LineForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }
