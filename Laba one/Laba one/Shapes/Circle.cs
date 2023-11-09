@@ -15,6 +15,7 @@ namespace Laba_one.Shapes
         private Pen Pen;
         private Graphics Graphics;
 
+
         public Circle(Bitmap bitmap, Pen pen, int x, int y, int size)
         {
             Bitmap = bitmap;

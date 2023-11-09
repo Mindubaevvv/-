@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Laba_one
@@ -26,18 +23,19 @@ namespace Laba_one
             InitializeComponent();
             Bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
             Graphics = Graphics.FromImage(Bitmap);
-            Ellipses = new List<Ellipse>
+
+            /*Ellipses = new List<Ellipse>
             {
                 new Ellipse(new Pen(Color.Gray, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
                 new Ellipse(new Pen(Color.Gray, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
                 new Ellipse(new Pen(Color.Gray, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200))
             };
-            /*Circles = new List<Circle>
+            Circles = new List<Circle>
             {
                 new Circle(new Pen(Color.Red, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
                 new Circle(new Pen(Color.Red, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
                 new Circle(new Pen(Color.Red, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200))
-            };*/
+            };
             Triangles = new List<Triangle>
             {
                 new Triangle(new Pen(Color.BlueViolet, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
@@ -50,7 +48,7 @@ namespace Laba_one
                 new Square(new Pen(Color.Yellow, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
                 new Square(new Pen(Color.Yellow, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
                 new Square(new Pen(Color.Yellow, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200))
-            };
+            };*/
 
         }
 
@@ -61,8 +59,45 @@ namespace Laba_one
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // добавить очистку экрана (удалить все элементы)
+            var selectedShape = GetSelectedShape();
+            DrawShape(selectedShape);
 
         }
+
+        private void DrawShape(ShapeTypes selectedShape)
+        {
+            switch (selectedShape)
+            {
+                case ShapeTypes.Сircle:
+                    // вызов метода который рисует круг
+                    break;
+                case ShapeTypes.Ellipse: 
+                    break;
+                    /// .....
+
+
+            }
+        }
+
+
+        private ShapeTypes GetSelectedShape()
+        {
+            if (btnCircle.Checked)
+            {
+                return ShapeTypes.Сircle;
+            }
+            else if (btnEllipse.Checked)
+            {
+                return ShapeTypes.Ellipse;
+            }
+            else if (btnSquare.Checked)
+            {
+                return ShapeTypes.Square;
+            }
+            else return ShapeTypes.Triangle;
+        }
+
 
         private void btnMove_Click(object sender, EventArgs e)
         {
@@ -76,6 +111,7 @@ namespace Laba_one
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            Graphics.Clear(Color.White);
         }
 
     }
