@@ -68,7 +68,7 @@ namespace Laba_one
 
         private void DrawShape(ShapeTypes selectedShape)
         {
-            switch(selectedShape) 
+            switch (selectedShape)
             {
                 case ShapeTypes.Circle:
                     // вызов метода который рисует круг
@@ -159,7 +159,7 @@ namespace Laba_one
 
             Pen pen = new Pen(Color.Black, 2); // Цвет и толщина линии
 
-            Point[] points = { new Point(10,10), new Point(100, 10), new Point(50, 100) };
+            Point[] points = { new Point(10, 10), new Point(100, 10), new Point(50, 100) };
 
             graphics.DrawPolygon(pen, points);
 
@@ -177,8 +177,12 @@ namespace Laba_one
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Graphics.Clear(Color.White);
+            
         }
 
+        private void CaptionForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
