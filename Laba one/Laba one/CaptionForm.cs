@@ -1,5 +1,6 @@
 ﻿using Laba_one.Shapes;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -11,6 +12,7 @@ namespace Laba_one
         Graphics Graphics;
         Pen Pen;
         Random Random;
+        List<Circle> Circles;
         private int CircleSize; // Размер круга       
         private int PositionY;
         private int PositionX;
@@ -22,6 +24,7 @@ namespace Laba_one
             Graphics = Graphics.FromImage(Bitmap);
             Pen = new Pen(Color.Black, 2);
             Random = new Random();
+            Circles = new List<Circle>();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -29,20 +32,22 @@ namespace Laba_one
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void BtnCreate_Click(object sender, EventArgs e)
         {
             // добавить очистку экрана (удалить все элементы)
+
             var selectedShape = GetSelectedShape();
-            DrawShape(selectedShape);
+            DrawShapes(selectedShape, 1);
         }
 
-        private void DrawShape(ShapeTypes selectedShape)
+        private void DrawShapes(ShapeTypes selectedShape, int count)
         {
             switch (selectedShape)
             {
                 case ShapeTypes.Circle:
                     // вызов метода который рисует круг
-                    DrawCircle();
+                    DrawCircle(count);
                     break;
                 case ShapeTypes.Ellipse:
                     // вызов метода который рисует эллипс
@@ -77,7 +82,7 @@ namespace Laba_one
         }
 
 
-        private void DrawCircle()
+        private void DrawCircle(int count)
         {
             // TODO убрать вот эти строки со всех методов. Используем члены которые уже объявлены в самом классе, см вверх!
             // 
@@ -86,16 +91,29 @@ namespace Laba_one
             //Pen pen = new Pen(Color.Black, 2); // Цвет и толщина линии
 
             //pictureBox.Image = null;
-            pictureBox.Dispose();//InitialImage = null;
 
-            CircleSize = Random.Next(100, 250);
-            PositionY = Random.Next(0, pictureBox.Size.Height - CircleSize);
-            PositionX = Random.Next(0, pictureBox.Size.Width - CircleSize);
+            // TODO 3: вынеси в отдельный метод (очистка экрана). Поищи еще свой вариант очистки.
+            {
+                Bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
+                Graphics = Graphics.FromImage(Bitmap);
+            }
+            // TODO 4: изменить название кнопки "Изменить" на что-то вроде "изменить кол-во"
 
-            Graphics.DrawEllipse(Pen, PositionX, PositionY, CircleSize, CircleSize); // Рисуем круг
+            // Рисуем круг
+
+
+            for (int i = 0; i < count; i++)
+            {
+                CircleSize = Random.Next(100, 250);
+                PositionY = Random.Next(0, pictureBox.Size.Height - CircleSize);
+                PositionX = Random.Next(0, pictureBox.Size.Width - CircleSize);
+
+                Graphics.DrawEllipse(Pen, PositionX, PositionY, CircleSize, CircleSize);
+                pictureBox.Image = Bitmap;
+            }
 
             // TODO 2: Переименовать все контролы: первая буква заглавным pictureBox -> PictureBox
-            pictureBox.Image = Bitmap;
+
 
             //PositionY += 10;
             //pictureBox.Location = new Point((WindowSize - CircleSize) / 2, positionY);
@@ -118,6 +136,7 @@ namespace Laba_one
         private int startY = 50;
         private void DrawSquare()
         {
+
             //Graphics.Clear(Color.White);           
             // Bitmap bitmap = new Bitmap(CircleSize, CircleSize);
             // Graphics graphics = Graphics.FromImage(Bitmap);
@@ -149,7 +168,14 @@ namespace Laba_one
 
         private void btnChange_Click(object sender, EventArgs e)
         {
+            var selectedShape = GetSelectedShape();
+            var count = Random.Next(1, 5);
+            DrawShapes(selectedShape, count);
+        }
 
+        private void ChangeShapeCount(ShapeTypes selectedShape)
+        {
+            throw new NotImplementedException();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

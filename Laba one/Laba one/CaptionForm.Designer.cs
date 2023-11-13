@@ -62,7 +62,7 @@
             btnCreate.TabIndex = 1;
             btnCreate.Text = "Создать";
             btnCreate.UseVisualStyleBackColor = false;
-            btnCreate.Click += button1_Click;
+            btnCreate.Click += BtnCreate_Click;
             // 
             // BtnMove
             // 
