@@ -101,6 +101,7 @@
             // btnCircle
             // 
             btnCircle.AutoSize = true;
+            btnCircle.Checked = true;
             btnCircle.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnCircle.Location = new System.Drawing.Point(354, 565);
             btnCircle.Name = "btnCircle";
@@ -118,7 +119,6 @@
             btnEllipse.Name = "btnEllipse";
             btnEllipse.Size = new System.Drawing.Size(97, 29);
             btnEllipse.TabIndex = 6;
-            btnEllipse.TabStop = true;
             btnEllipse.Text = "Эллипс";
             btnEllipse.UseVisualStyleBackColor = true;
             // 
@@ -130,7 +130,6 @@
             btnSquare.Name = "btnSquare";
             btnSquare.Size = new System.Drawing.Size(105, 29);
             btnSquare.TabIndex = 7;
-            btnSquare.TabStop = true;
             btnSquare.Text = "Квадрат";
             btnSquare.UseVisualStyleBackColor = true;
             // 
@@ -142,7 +141,6 @@
             btnTriangle.Name = "btnTriangle";
             btnTriangle.Size = new System.Drawing.Size(145, 29);
             btnTriangle.TabIndex = 8;
-            btnTriangle.TabStop = true;
             btnTriangle.Text = "Треугольник";
             btnTriangle.UseVisualStyleBackColor = true;
             // 
