@@ -1,12 +1,6 @@
 ﻿using Laba_one.Shapes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Laba_one
@@ -14,44 +8,20 @@ namespace Laba_one
     public partial class CaptionForm : Form
     {
         Bitmap Bitmap;
-        List<Triangle> Triangles;
-        List<Square> Squares;
-        List<Ellipse> Ellipses;
-        List<Circle> Circles;
         Graphics Graphics;
-        Random random = new Random();
+        Pen Pen;
+        Random Random;
+        private int CircleSize; // Размер круга       
+        private int PositionY;
+        private int PositionX;
 
         public CaptionForm()
         {
             InitializeComponent();
             Bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
             Graphics = Graphics.FromImage(Bitmap);
-            /*Ellipses = new List<Ellipse>
-            {
-                new Ellipse(new Pen(Color.Gray, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Ellipse(new Pen(Color.Gray, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Ellipse(new Pen(Color.Gray, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200))
-            };
-            Circles = new List<Circle>
-            {
-                new Circle(new Pen(Color.Red, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Circle(new Pen(Color.Red, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Circle(new Pen(Color.Red, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200))
-            };
-            Triangles = new List<Triangle>
-            {
-                new Triangle(new Pen(Color.BlueViolet, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Triangle(new Pen(Color.BlueViolet, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Triangle(new Pen(Color.BlueViolet, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200))
-            };
-            Squares = new List<Square>
-            {
-                new Square(new Pen(Color.Yellow, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Square(new Pen(Color.Yellow, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Square(new Pen(Color.Yellow, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200)),
-                new Square(new Pen(Color.Yellow, 3f), Bitmap, random.Next(10,200), random.Next(10,200), random.Next(10,200))
-            };*/
-
+            Pen = new Pen(Color.Black, 2);
+            Random = new Random();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -84,6 +54,7 @@ namespace Laba_one
                     break;
                 case ShapeTypes.Triangle:
                     // вызов метода который рисует треугольник
+                    DrawTriangle();
                     break;
             }
         }
@@ -105,22 +76,29 @@ namespace Laba_one
             else return ShapeTypes.Triangle;
         }
 
-        private const int CircleSize = 150; // Размер круга
-        private const int WindowSize = CircleSize + 40; // Размер окна
-        private int positionY;
+
         private void DrawCircle()
         {
-            Bitmap bitmap = new Bitmap(CircleSize, CircleSize);
-            Graphics graphics = Graphics.FromImage(bitmap);
+            // TODO убрать вот эти строки со всех методов. Используем члены которые уже объявлены в самом классе, см вверх!
+            // 
+            //Bitmap bitmap = new Bitmap(CircleSize, CircleSize);
+            //Graphics graphics = Graphics.FromImage(bitmap);
+            //Pen pen = new Pen(Color.Black, 2); // Цвет и толщина линии
 
-            Pen pen = new Pen(Color.Black, 2); // Цвет и толщина линии
+            //pictureBox.Image = null;
+            pictureBox.Dispose();//InitialImage = null;
 
-            graphics.DrawEllipse(pen, 0, 0, CircleSize, CircleSize); // Рисуем круг
+            CircleSize = Random.Next(100, 250);
+            PositionY = Random.Next(0, pictureBox.Size.Height - CircleSize);
+            PositionX = Random.Next(0, pictureBox.Size.Width - CircleSize);
 
-            pictureBox.Image = bitmap;
+            Graphics.DrawEllipse(Pen, PositionX, PositionY, CircleSize, CircleSize); // Рисуем круг
 
-            positionY += 10;
-            pictureBox.Location = new Point((WindowSize - CircleSize) / 2, positionY);
+            // TODO 2: Переименовать все контролы: первая буква заглавным pictureBox -> PictureBox
+            pictureBox.Image = Bitmap;
+
+            //PositionY += 10;
+            //pictureBox.Location = new Point((WindowSize - CircleSize) / 2, positionY);
         }
 
         private void DrawEllipse()
@@ -140,14 +118,13 @@ namespace Laba_one
         private int startY = 50;
         private void DrawSquare()
         {
-            Bitmap bitmap = new Bitmap(CircleSize, CircleSize);
-            Graphics graphics = Graphics.FromImage(bitmap);
+            //Graphics.Clear(Color.White);           
+            // Bitmap bitmap = new Bitmap(CircleSize, CircleSize);
+            // Graphics graphics = Graphics.FromImage(Bitmap);
+            // Pen pen = new Pen(Color.Black, 2); // Цвет и толщина линии
 
-            Pen pen = new Pen(Color.Black, 2); // Цвет и толщина линии
-
-            graphics.DrawRectangle(pen, startX, startY, SquareSize, SquareSize);
-
-            pictureBox.Image = bitmap;
+            Graphics.DrawRectangle(Pen, startX, startY, SquareSize, SquareSize);
+            pictureBox.Image = Bitmap;
         }
 
         private int y = 100;
@@ -177,7 +154,7 @@ namespace Laba_one
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void CaptionForm_Load(object sender, EventArgs e)
