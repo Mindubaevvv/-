@@ -46,9 +46,10 @@
             // PictureBox
             // 
             PictureBox.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            PictureBox.Location = new System.Drawing.Point(5, 8);
+            PictureBox.Location = new System.Drawing.Point(11, 16);
+            PictureBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             PictureBox.Name = "PictureBox";
-            PictureBox.Size = new System.Drawing.Size(1290, 523);
+            PictureBox.Size = new System.Drawing.Size(2741, 1072);
             PictureBox.TabIndex = 0;
             PictureBox.TabStop = false;
             // 
@@ -56,9 +57,10 @@
             // 
             btnCreate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             btnCreate.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnCreate.Location = new System.Drawing.Point(12, 552);
+            btnCreate.Location = new System.Drawing.Point(26, 1132);
+            btnCreate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnCreate.Name = "btnCreate";
-            btnCreate.Size = new System.Drawing.Size(130, 58);
+            btnCreate.Size = new System.Drawing.Size(276, 119);
             btnCreate.TabIndex = 1;
             btnCreate.Text = "Создать";
             btnCreate.UseVisualStyleBackColor = false;
@@ -68,9 +70,10 @@
             // 
             btnChange.BackColor = System.Drawing.SystemColors.ActiveBorder;
             btnChange.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnChange.Location = new System.Drawing.Point(12, 622);
+            btnChange.Location = new System.Drawing.Point(26, 1275);
+            btnChange.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnChange.Name = "btnChange";
-            btnChange.Size = new System.Drawing.Size(130, 68);
+            btnChange.Size = new System.Drawing.Size(276, 139);
             btnChange.TabIndex = 3;
             btnChange.Text = "Изменить кол-во";
             btnChange.UseVisualStyleBackColor = false;
@@ -80,9 +83,10 @@
             // 
             btnDelete.BackColor = System.Drawing.SystemColors.ActiveCaption;
             btnDelete.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnDelete.Location = new System.Drawing.Point(1152, 638);
+            btnDelete.Location = new System.Drawing.Point(2448, 1308);
+            btnDelete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new System.Drawing.Size(139, 57);
+            btnDelete.Size = new System.Drawing.Size(295, 117);
             btnDelete.TabIndex = 4;
             btnDelete.Text = "Удалить";
             btnDelete.UseVisualStyleBackColor = false;
@@ -93,9 +97,10 @@
             btnCircle.AutoSize = true;
             btnCircle.Checked = true;
             btnCircle.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnCircle.Location = new System.Drawing.Point(396, 567);
+            btnCircle.Location = new System.Drawing.Point(842, 1162);
+            btnCircle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnCircle.Name = "btnCircle";
-            btnCircle.Size = new System.Drawing.Size(73, 29);
+            btnCircle.Size = new System.Drawing.Size(136, 52);
             btnCircle.TabIndex = 5;
             btnCircle.TabStop = true;
             btnCircle.Text = "Круг";
@@ -105,9 +110,10 @@
             // 
             btnEllipse.AutoSize = true;
             btnEllipse.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnEllipse.Location = new System.Drawing.Point(568, 645);
+            btnEllipse.Location = new System.Drawing.Point(1207, 1322);
+            btnEllipse.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnEllipse.Name = "btnEllipse";
-            btnEllipse.Size = new System.Drawing.Size(97, 29);
+            btnEllipse.Size = new System.Drawing.Size(185, 52);
             btnEllipse.TabIndex = 6;
             btnEllipse.Text = "Эллипс";
             btnEllipse.UseVisualStyleBackColor = true;
@@ -116,9 +122,10 @@
             // 
             btnSquare.AutoSize = true;
             btnSquare.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnSquare.Location = new System.Drawing.Point(568, 567);
+            btnSquare.Location = new System.Drawing.Point(1207, 1162);
+            btnSquare.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnSquare.Name = "btnSquare";
-            btnSquare.Size = new System.Drawing.Size(105, 29);
+            btnSquare.Size = new System.Drawing.Size(199, 52);
             btnSquare.TabIndex = 7;
             btnSquare.Text = "Квадрат";
             btnSquare.UseVisualStyleBackColor = true;
@@ -127,9 +134,10 @@
             // 
             btnTriangle.AutoSize = true;
             btnTriangle.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnTriangle.Location = new System.Drawing.Point(396, 645);
+            btnTriangle.Location = new System.Drawing.Point(842, 1322);
+            btnTriangle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnTriangle.Name = "btnTriangle";
-            btnTriangle.Size = new System.Drawing.Size(145, 29);
+            btnTriangle.Size = new System.Drawing.Size(279, 52);
             btnTriangle.TabIndex = 8;
             btnTriangle.Text = "Треугольник";
             btnTriangle.UseVisualStyleBackColor = true;
@@ -138,20 +146,23 @@
             // 
             btnUp.BackColor = System.Drawing.SystemColors.ActiveBorder;
             btnUp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnUp.Location = new System.Drawing.Point(240, 554);
+            btnUp.Location = new System.Drawing.Point(510, 1136);
+            btnUp.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnUp.Name = "btnUp";
-            btnUp.Size = new System.Drawing.Size(75, 42);
+            btnUp.Size = new System.Drawing.Size(159, 86);
             btnUp.TabIndex = 9;
             btnUp.Text = "Вверх";
             btnUp.UseVisualStyleBackColor = false;
+            btnUp.Click += btnUp_Click;
             // 
             // btnDown
             // 
             btnDown.BackColor = System.Drawing.SystemColors.ActiveBorder;
             btnDown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnDown.Location = new System.Drawing.Point(240, 647);
+            btnDown.Location = new System.Drawing.Point(510, 1326);
+            btnDown.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnDown.Name = "btnDown";
-            btnDown.Size = new System.Drawing.Size(75, 43);
+            btnDown.Size = new System.Drawing.Size(159, 88);
             btnDown.TabIndex = 10;
             btnDown.Text = "Вниз";
             btnDown.UseVisualStyleBackColor = false;
@@ -160,9 +171,10 @@
             // 
             btnRight.BackColor = System.Drawing.SystemColors.ActiveCaption;
             btnRight.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnRight.Location = new System.Drawing.Point(307, 602);
+            btnRight.Location = new System.Drawing.Point(652, 1234);
+            btnRight.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnRight.Name = "btnRight";
-            btnRight.Size = new System.Drawing.Size(82, 39);
+            btnRight.Size = new System.Drawing.Size(174, 80);
             btnRight.TabIndex = 11;
             btnRight.Text = "->";
             btnRight.UseVisualStyleBackColor = false;
@@ -171,9 +183,10 @@
             // 
             btnLeft.BackColor = System.Drawing.SystemColors.ActiveCaption;
             btnLeft.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnLeft.Location = new System.Drawing.Point(165, 602);
+            btnLeft.Location = new System.Drawing.Point(351, 1234);
+            btnLeft.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             btnLeft.Name = "btnLeft";
-            btnLeft.Size = new System.Drawing.Size(82, 39);
+            btnLeft.Size = new System.Drawing.Size(174, 80);
             btnLeft.TabIndex = 12;
             btnLeft.Text = "<-";
             btnLeft.UseVisualStyleBackColor = false;
@@ -181,9 +194,9 @@
             // 
             // CaptionForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1303, 702);
+            ClientSize = new System.Drawing.Size(2769, 1439);
             Controls.Add(btnLeft);
             Controls.Add(btnRight);
             Controls.Add(btnDown);
@@ -197,6 +210,7 @@
             Controls.Add(btnCreate);
             Controls.Add(PictureBox);
             Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             Name = "CaptionForm";
             Text = "CaptionForm";
             ((System.ComponentModel.ISupportInitialize)PictureBox).EndInit();

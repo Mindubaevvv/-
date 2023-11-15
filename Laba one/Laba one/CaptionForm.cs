@@ -197,5 +197,12 @@ namespace Laba_one
             }
             else return ShapeTypes.Triangle;
         }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            ClearPictureBox();
+            var selectedShape = GetSelectedShape();
+            DrawWithNewPosition(selectedShape, Direction.Up);
+        }
     }
 }

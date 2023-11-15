@@ -34,11 +34,13 @@ namespace Laba_one.Shapes
                 case Direction.Right:
                     X += 10;
                     break;
+
                 case Direction.Up:
-                    Y += 10;
-                    break;
-                default: // down
                     Y -= 10;
+                    break;
+
+                default: // down
+                    Y += 10;
                     break;
             }
         }
