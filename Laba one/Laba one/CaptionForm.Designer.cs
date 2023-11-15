@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox = new System.Windows.Forms.PictureBox();
+            PictureBox = new System.Windows.Forms.PictureBox();
             btnCreate = new System.Windows.Forms.Button();
             btnChange = new System.Windows.Forms.Button();
             btnDelete = new System.Windows.Forms.Button();
@@ -40,17 +40,17 @@
             btnDown = new System.Windows.Forms.Button();
             btnRight = new System.Windows.Forms.Button();
             btnLeft = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PictureBox).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox
+            // PictureBox
             // 
-            pictureBox.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            pictureBox.Location = new System.Drawing.Point(5, 8);
-            pictureBox.Name = "pictureBox";
-            pictureBox.Size = new System.Drawing.Size(1290, 523);
-            pictureBox.TabIndex = 0;
-            pictureBox.TabStop = false;
+            PictureBox.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            PictureBox.Location = new System.Drawing.Point(5, 8);
+            PictureBox.Name = "PictureBox";
+            PictureBox.Size = new System.Drawing.Size(1290, 523);
+            PictureBox.TabIndex = 0;
+            PictureBox.TabStop = false;
             // 
             // btnCreate
             // 
@@ -195,18 +195,18 @@
             Controls.Add(btnDelete);
             Controls.Add(btnChange);
             Controls.Add(btnCreate);
-            Controls.Add(pictureBox);
+            Controls.Add(PictureBox);
             Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Name = "CaptionForm";
             Text = "CaptionForm";
-            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnDelete;

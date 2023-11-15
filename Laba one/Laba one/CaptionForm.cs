@@ -27,7 +27,7 @@ namespace Laba_one
         public CaptionForm()
         {
             InitializeComponent();
-            Bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
+            Bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
             Graphics = Graphics.FromImage(Bitmap);
             Pen = new Pen(Color.MediumSlateBlue, 2);
             Random = new Random();
@@ -58,7 +58,6 @@ namespace Laba_one
                     DrawSquare(count);
                     break;
                 case ShapeTypes.Triangle:
-                    // вызов метода который рисует треугольник
                     DrawTriangle(count);
                     break;
             }
@@ -83,7 +82,7 @@ namespace Laba_one
 
         private void ClearPictureBox()
         {
-            Bitmap = new Bitmap(pictureBox.Width, pictureBox.Height);
+            Bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
             Graphics = Graphics.FromImage(Bitmap);
         }
 
@@ -92,14 +91,12 @@ namespace Laba_one
             for (int i = 0; i < count; i++)
             {
                 CircleSize = Random.Next(100, 250);
-                PositionY = Random.Next(0, pictureBox.Size.Height - CircleSize);
-                PositionX = Random.Next(0, pictureBox.Size.Width - CircleSize);
+                PositionY = Random.Next(0, PictureBox.Size.Height - CircleSize);
+                PositionX = Random.Next(0, PictureBox.Size.Width - CircleSize);
 
                 Graphics.DrawEllipse(Pen, PositionX, PositionY, CircleSize, CircleSize);
-                pictureBox.Image = Bitmap;
+                PictureBox.Image = Bitmap;
             }
-
-            // TODO 2: Переименовать все контролы: первая буква заглавным pictureBox -> PictureBox
         }
 
         private void DrawEllipse(int count)
@@ -107,11 +104,11 @@ namespace Laba_one
             for (int i = 0; i < count; i++)
             {
                 CircleSize = Random.Next(100, 250);
-                PositionY = Random.Next(0, pictureBox.Size.Height - CircleSize);
-                PositionX = Random.Next(0, pictureBox.Size.Width - CircleSize);
+                PositionY = Random.Next(0, PictureBox.Size.Height - CircleSize);
+                PositionX = Random.Next(0, PictureBox.Size.Width - CircleSize);
 
                 Graphics.DrawEllipse(Pen, PositionX, PositionY, CircleSize / 2, CircleSize);
-                pictureBox.Image = Bitmap;
+                PictureBox.Image = Bitmap;
             }
         }
 
@@ -120,11 +117,11 @@ namespace Laba_one
             for (int i = 0; i < count; i++)
             {
                 SquareSize = Random.Next(100, 250);
-                PositionY = Random.Next(0, pictureBox.Size.Height - SquareSize);
-                PositionX = Random.Next(0, pictureBox.Size.Width - SquareSize);
+                PositionY = Random.Next(0, PictureBox.Size.Height - SquareSize);
+                PositionX = Random.Next(0, PictureBox.Size.Width - SquareSize);
 
                 Graphics.DrawRectangle(Pen, PositionX, PositionY, SquareSize, SquareSize);
-                pictureBox.Image = Bitmap;
+                PictureBox.Image = Bitmap;
             }
         }
         private void DrawTriangle(int count)
@@ -132,8 +129,8 @@ namespace Laba_one
             for (int i = 0; i < count; i++)
             {
                 TriangleSize = Random.Next(100, 250);
-                int x = Random.Next(0, pictureBox.Width - TriangleSize);
-                int y = Random.Next(0, pictureBox.Height - TriangleSize);
+                int x = Random.Next(0, PictureBox.Width - TriangleSize);
+                int y = Random.Next(0, PictureBox.Height - TriangleSize);
                 Point point1 = new Point(x, y + TriangleSize);
                 Point point2 = new Point(x + TriangleSize / 2, y);
                 Point point3 = new Point(x + TriangleSize, y + TriangleSize);
@@ -141,7 +138,7 @@ namespace Laba_one
                 Point[] points = { point1, point2, point3 };
 
                 Graphics.DrawPolygon(Pen, points);
-                pictureBox.Image = Bitmap;
+                PictureBox.Image = Bitmap;
             }
 
         }
@@ -161,8 +158,8 @@ namespace Laba_one
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            pictureBox.Image = null;
-            pictureBox.Invalidate();
+            PictureBox.Image = null;
+            PictureBox.Invalidate();
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
