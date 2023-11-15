@@ -11,4 +11,11 @@ namespace Laba_one.Shapes
         Square,
         Triangle
     }
+    enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
 }

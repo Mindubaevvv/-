@@ -29,7 +29,7 @@ namespace Laba_one
             InitializeComponent();
             Bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
             Graphics = Graphics.FromImage(Bitmap);
-            Pen = new Pen(Color.MediumSlateBlue, 2);
+            Pen = new Pen(Color.Black, 5);
             Random = new Random();
             Circles = new List<Circle>();
             Ellipses = new List<Ellipse>();
@@ -39,9 +39,11 @@ namespace Laba_one
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
+            ClearPictureBox();
+
             var selectedShape = GetSelectedShape();
             DrawShapes(selectedShape, 1);
-            ClearPictureBox();
+
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -63,38 +65,54 @@ namespace Laba_one
             }
         }
 
-        private ShapeTypes GetSelectedShape()
-        {
-            if (btnCircle.Checked)
-            {
-                return ShapeTypes.Circle;
-            }
-            else if (btnEllipse.Checked)
-            {
-                return ShapeTypes.Ellipse;
-            }
-            else if (btnSquare.Checked)
-            {
-                return ShapeTypes.Square;
-            }
-            else return ShapeTypes.Triangle;
-        }
-
-        private void ClearPictureBox()
-        {
-            Bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
-            Graphics = Graphics.FromImage(Bitmap);
-        }
-
         private void DrawCircle(int count)
         {
+            Circles.Clear();
+
             for (int i = 0; i < count; i++)
             {
-                CircleSize = Random.Next(100, 250);
-                PositionY = Random.Next(0, PictureBox.Size.Height - CircleSize);
-                PositionX = Random.Next(0, PictureBox.Size.Width - CircleSize);
+                var circleSize = Random.Next(100, 250);
+                var positionY = Random.Next(0, PictureBox.Size.Height - circleSize);
+                var positionX = Random.Next(0, PictureBox.Size.Width - circleSize);
 
-                Graphics.DrawEllipse(Pen, PositionX, PositionY, CircleSize, CircleSize);
+                var circle = new Circle(Pen, positionX, positionY, circleSize);
+                circle.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+
+                Circles.Add(circle);
+            }
+        }
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            ClearPictureBox();
+            var selectedShape = GetSelectedShape();
+            DrawWithNewPosition(selectedShape, Direction.Left);
+        }
+
+        private void DrawWithNewPosition(ShapeTypes selectedShape, Direction direction)
+        {
+            switch (selectedShape)
+            {
+                case ShapeTypes.Circle:
+                    MoveAndDrawCircle(direction);
+                    break;
+                case ShapeTypes.Square:
+                    break;
+                case ShapeTypes.Triangle:
+                    break;
+                default:
+                    //эллипс 
+                    break;
+            }
+
+        }
+
+        private void MoveAndDrawCircle(Direction direction)
+        {
+            foreach (Circle circle in Circles)
+            {
+                circle.Move(direction);
+                circle.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
         }
@@ -151,23 +169,33 @@ namespace Laba_one
             ClearPictureBox();
         }
 
-        private void ChangeShapeCount(ShapeTypes selectedShape)
-        {
-            throw new NotImplementedException();
-        }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             PictureBox.Image = null;
             PictureBox.Invalidate();
         }
-
-        private void btnLeft_Click(object sender, EventArgs e)
+        private void ClearPictureBox()
         {
-            var selectedShape = GetSelectedShape();
-            DrawShapes(selectedShape, 1);
-            ClearPictureBox();
-
+            Bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
+            Graphics = Graphics.FromImage(Bitmap);
+        }
+        private ShapeTypes GetSelectedShape()
+        {
+            if (btnCircle.Checked)
+            {
+                return ShapeTypes.Circle;
+            }
+            else if (btnEllipse.Checked)
+            {
+                return ShapeTypes.Ellipse;
+            }
+            else if (btnSquare.Checked)
+            {
+                return ShapeTypes.Square;
+            }
+            else return ShapeTypes.Triangle;
         }
     }
 }

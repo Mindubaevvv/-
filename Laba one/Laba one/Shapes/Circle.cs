@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Laba_one.Shapes
 {
@@ -10,46 +11,41 @@ namespace Laba_one.Shapes
         private int X;
         private int Y;
         private int Size;
-        private bool IsVizible;
-        private Bitmap Bitmap;
         private Pen Pen;
-        private Graphics Graphics;
 
-        public Circle(Bitmap bitmap, Pen pen, int x, int y, int size)
+        public Circle(Pen pen, int x, int y, int size)
         {
-            Bitmap = bitmap;
             Pen = pen;
             Size = size;
             X = x;
             Y = y;
-            IsVizible = true;
-            Graphics = Graphics.FromImage(bitmap);
+
         }
 
-        public void Hide(bool state)
-        {
-            IsVizible = state;
-        }
 
-        public bool ISVizible()
+        public void Move(Direction direction)
         {
-            return IsVizible;
-        }
-
-        public void Move(int x, int y)
-        {
-            X += x;
-            Y += y;
-        }
-
-        public virtual Bitmap Draw()
-        {
-            if (IsVizible)
+            switch (direction)
             {
-                Graphics.DrawEllipse(Pen, X, Y, Size, Size);
+                case Direction.Left:
+                    X -= 10;
+                    break;
+
+                case Direction.Right:
+                    X += 10;
+                    break;
+                case Direction.Up:
+                    Y += 10;
+                    break;
+                default: // down
+                    Y -= 10;
+                    break;
             }
-            return Bitmap;
         }
 
+        public void Draw(Graphics Graphics)
+        {
+            Graphics.DrawEllipse(Pen, X, Y, Size, Size);
+        }
     }
 }
