@@ -10,52 +10,39 @@ namespace Laba_one.Shapes
         private int X;
         private int Y;
         private int Size;
-        private bool IsVizible;
-        private Bitmap Bitmap;
-        private Graphics Graphics;
         private Pen Pen;
 
-        public Square(Pen pen, Bitmap bitmap, int x, int y, int size) 
+        public Square(Pen pen, int x, int y, int size)
         {
-            IsVizible = true;
-            Bitmap = bitmap;
-            Size = size;
             Pen = pen;
+            Size = size;
             X = x;
             Y = y;
-            Graphics = Graphics.FromImage(bitmap);
         }
-
-        public void Hide(bool state)
+        public void Move(Direction direction)
         {
-            IsVizible = state;
-        }
-
-        public bool ISVizible()
-        {
-            return IsVizible;
-        }
-
-        public void Move(int x, int y)
-        {
-            X += x;
-            Y += y;
-        }
-
-        public virtual Bitmap Draw()
-        {
-            if (IsVizible)
+            switch (direction)
             {
-                Point[] points = new Point[]
-                {
-                    new Point(X, Y),
-                    new Point(X, Y + Size),
-                    new Point(X + Size, Y + Size),
-                    new Point(X + Size, Y)
-                };
-                Graphics.DrawPolygon(Pen, points);
+                case Direction.Left:
+                    X -= 20;
+                    break;
+
+                case Direction.Right:
+                    X += 20;
+                    break;
+
+                case Direction.Up:
+                    Y -= 20;
+                    break;
+
+                default: // down
+                    Y += 20;
+                    break;
             }
-            return Bitmap;
+        }
+        public void Draw(Graphics Graphics)
+        {
+            Graphics.DrawRectangle(Pen, X, Y, Size, Size);
         }
     }
 }

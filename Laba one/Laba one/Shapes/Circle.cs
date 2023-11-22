@@ -21,30 +21,27 @@ namespace Laba_one.Shapes
             Y = y;
 
         }
-
-
         public void Move(Direction direction)
         {
             switch (direction)
             {
                 case Direction.Left:
-                    X -= 10;
+                    X -= 20;
                     break;
 
                 case Direction.Right:
-                    X += 10;
+                    X += 20;
                     break;
 
                 case Direction.Up:
-                    Y -= 10;
+                    Y -= 20;
                     break;
 
                 default: // down
-                    Y += 10;
+                    Y += 20;
                     break;
             }
         }
-
         public void Draw(Graphics Graphics)
         {
             Graphics.DrawEllipse(Pen, X, Y, Size, Size);

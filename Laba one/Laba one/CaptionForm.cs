@@ -37,15 +37,6 @@ namespace Laba_one
             Triangles = new List<Triangle>();
         }
 
-        private void BtnCreate_Click(object sender, EventArgs e)
-        {
-            ClearPictureBox();
-
-            var selectedShape = GetSelectedShape();
-            DrawShapes(selectedShape, 1);
-
-        }
-
         private void DrawShapes(ShapeTypes selectedShape, int count)
         {
             switch (selectedShape)
@@ -64,31 +55,6 @@ namespace Laba_one
                     break;
             }
         }
-
-        private void DrawCircle(int count)
-        {
-            Circles.Clear();
-
-            for (int i = 0; i < count; i++)
-            {
-                var circleSize = Random.Next(100, 250);
-                var positionY = Random.Next(0, PictureBox.Size.Height - circleSize);
-                var positionX = Random.Next(0, PictureBox.Size.Width - circleSize);
-
-                var circle = new Circle(Pen, positionX, positionY, circleSize);
-                circle.Draw(Graphics);
-                PictureBox.Image = Bitmap;
-
-                Circles.Add(circle);
-            }
-        }
-        private void btnLeft_Click(object sender, EventArgs e)
-        {
-            ClearPictureBox();
-            var selectedShape = GetSelectedShape();
-            DrawWithNewPosition(selectedShape, Direction.Left);
-        }
-
         private void DrawWithNewPosition(ShapeTypes selectedShape, Direction direction)
         {
             switch (selectedShape)
@@ -97,89 +63,16 @@ namespace Laba_one
                     MoveAndDrawCircle(direction);
                     break;
                 case ShapeTypes.Square:
+                    MoveAndDrawSquare(direction);
                     break;
                 case ShapeTypes.Triangle:
+                    MoveAndDrawTriangle(direction);
                     break;
                 default:
-                    //эллипс 
+                    MoveAndDrawEllipse(direction);
                     break;
             }
 
-        }
-
-        private void MoveAndDrawCircle(Direction direction)
-        {
-            foreach (Circle circle in Circles)
-            {
-                circle.Move(direction);
-                circle.Draw(Graphics);
-                PictureBox.Image = Bitmap;
-            }
-        }
-
-        private void DrawEllipse(int count)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                CircleSize = Random.Next(100, 250);
-                PositionY = Random.Next(0, PictureBox.Size.Height - CircleSize);
-                PositionX = Random.Next(0, PictureBox.Size.Width - CircleSize);
-
-                Graphics.DrawEllipse(Pen, PositionX, PositionY, CircleSize / 2, CircleSize);
-                PictureBox.Image = Bitmap;
-            }
-        }
-
-        private void DrawSquare(int count)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                SquareSize = Random.Next(100, 250);
-                PositionY = Random.Next(0, PictureBox.Size.Height - SquareSize);
-                PositionX = Random.Next(0, PictureBox.Size.Width - SquareSize);
-
-                Graphics.DrawRectangle(Pen, PositionX, PositionY, SquareSize, SquareSize);
-                PictureBox.Image = Bitmap;
-            }
-        }
-        private void DrawTriangle(int count)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                TriangleSize = Random.Next(100, 250);
-                int x = Random.Next(0, PictureBox.Width - TriangleSize);
-                int y = Random.Next(0, PictureBox.Height - TriangleSize);
-                Point point1 = new Point(x, y + TriangleSize);
-                Point point2 = new Point(x + TriangleSize / 2, y);
-                Point point3 = new Point(x + TriangleSize, y + TriangleSize);
-
-                Point[] points = { point1, point2, point3 };
-
-                Graphics.DrawPolygon(Pen, points);
-                PictureBox.Image = Bitmap;
-            }
-
-        }
-
-        private void btnChange_Click(object sender, EventArgs e)
-        {
-            var selectedShape = GetSelectedShape();
-            var count = Random.Next(1, 5);
-            DrawShapes(selectedShape, count);
-            ClearPictureBox();
-        }
-
-
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            PictureBox.Image = null;
-            PictureBox.Invalidate();
-        }
-        private void ClearPictureBox()
-        {
-            Bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
-            Graphics = Graphics.FromImage(Bitmap);
         }
         private ShapeTypes GetSelectedShape()
         {
@@ -197,12 +90,168 @@ namespace Laba_one
             }
             else return ShapeTypes.Triangle;
         }
+        private void DrawCircle(int count)
+        {
+            Circles.Clear();
 
+            for (int i = 0; i < count; i++)
+            {
+                var circleSize = Random.Next(100, 250);
+                var positionY = Random.Next(0, PictureBox.Size.Height - circleSize);
+                var positionX = Random.Next(0, PictureBox.Size.Width - circleSize);
+
+                var circle = new Circle(Pen, positionX, positionY, circleSize);
+                circle.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+
+                Circles.Add(circle);
+            }
+        }
+
+        private void DrawEllipse(int count)
+        {
+            Ellipses.Clear();
+
+            for (int i = 0; i < count; i++)
+            {
+                var circleSize = Random.Next(100, 250);
+                var positionY = Random.Next(0, PictureBox.Size.Height - circleSize);
+                var positionX = Random.Next(0, PictureBox.Size.Width - circleSize);
+
+                var ellipse = new Ellipse(Pen, positionX, positionY, circleSize / 2);
+                ellipse.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+
+                Ellipses.Add(ellipse);
+            }
+        }
+
+        private void DrawSquare(int count)
+        {
+            Squares.Clear();
+
+            for (int i = 0; i < count; i++)
+            {
+                var squareSize = Random.Next(100, 250);
+                var positionY = Random.Next(0, PictureBox.Size.Height - squareSize);
+                var positionX = Random.Next(0, PictureBox.Size.Width - squareSize);
+
+                var squares = new Square(Pen, positionX, positionY, squareSize);
+                squares.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+
+                Squares.Add(squares);
+            }
+        }
+        private void DrawTriangle(int count)
+        {
+            Triangles.Clear();
+
+            for (int i = 0; i < count; i++)
+            {
+                var triangleSize = Random.Next(100, 250);
+                var x = Random.Next(0, PictureBox.Width - triangleSize);
+                var y = Random.Next(0, PictureBox.Height - triangleSize);
+                Point point1 = new Point(x, y + triangleSize);
+                Point point2 = new Point(x + triangleSize / 2, y);
+                Point point3 = new Point(x + triangleSize, y + triangleSize);
+
+                Point[] points = { point1, point2, point3 };
+
+                var triangles = new Triangle(Pen, x, y, triangleSize);
+                triangles.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+
+                Triangles.Add(triangles);
+            }
+
+        }
+        private void MoveAndDrawCircle(Direction direction)
+        {
+            foreach (Circle circle in Circles)
+            {
+                circle.Move(direction);
+                circle.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+            }
+        }
+        private void MoveAndDrawEllipse(Direction direction)
+        {
+            foreach (Ellipse ellipse in Ellipses)
+            {
+                ellipse.Move(direction);
+                ellipse.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+            }
+        }
+        private void MoveAndDrawSquare(Direction direction)
+        {
+            foreach (Square square in Squares)
+            {
+                square.Move(direction);
+                square.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+            }
+        }
+        private void MoveAndDrawTriangle(Direction direction)
+        {
+            foreach (Triangle triangle in Triangles)
+            {
+                triangle.Move(direction);
+                triangle.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+            }
+        }
+        private void ClearPictureBox()
+        {
+            Bitmap = new Bitmap(PictureBox.Width, PictureBox.Height);
+            Graphics = Graphics.FromImage(Bitmap);
+        }
+        private void BtnCreate_Click(object sender, EventArgs e)
+        {
+            ClearPictureBox();
+
+            var selectedShape = GetSelectedShape();
+            DrawShapes(selectedShape, 1);
+        }
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            ClearPictureBox();
+            var selectedShape = GetSelectedShape();
+            DrawWithNewPosition(selectedShape, Direction.Left);
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            var selectedShape = GetSelectedShape();
+            var count = Random.Next(1, 5);
+            DrawShapes(selectedShape, count);
+            ClearPictureBox();
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            PictureBox.Image = null;
+            PictureBox.Invalidate();
+        }
         private void btnUp_Click(object sender, EventArgs e)
         {
             ClearPictureBox();
             var selectedShape = GetSelectedShape();
             DrawWithNewPosition(selectedShape, Direction.Up);
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            ClearPictureBox();
+            var selectedShape = GetSelectedShape();
+            DrawWithNewPosition(selectedShape, Direction.Right);
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            ClearPictureBox();
+            var selectedShape = GetSelectedShape();
+            DrawWithNewPosition(selectedShape, Direction.Down);
         }
     }
 }
