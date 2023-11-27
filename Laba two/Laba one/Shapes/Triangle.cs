@@ -48,7 +48,7 @@ namespace Laba_one.Shapes
             Point point3 = new Point(X + Size, Y + Size);
 
             Point[] points = { point1, point2, point3 };
-            Graphics.DrawPolygon(Pen, points    );
+            Graphics.DrawPolygon(Pen, points);
         }
     }
 }
