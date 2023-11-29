@@ -13,13 +13,14 @@ namespace Laba_one.Shapes
         protected int MinX;
         protected int MaxY;
         protected int MinY;
-        public Circle(Pen pen, int x, int y, int size, int pictureBoxHeight, int pictureBoxWidth) : base()
-        {
-            Pen = pen;
-            Size = size;
+
+        protected CirclePoint Point;
+
+        public Circle(Pen pen, int x, int y, int size, int pictureBoxHeight, int pictureBoxWidth) : base(pen,x,y,size)
+        {           
             Point = new CirclePoint(x, y, pictureBoxHeight - Size, pictureBoxWidth - Size);
         }
-        public void Move(Direction direction)
+        public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -68,25 +69,26 @@ namespace Laba_one.Shapes
                     break;
             }
         }
-
-        public void Resize(Resizing resizing)
+       
+        public override void Resize(Resizing resizing)
         {
-            if (resizing == Resizing.Plus) 
+            if (resizing == Resizing.Plus)
             {
                 Size += 10;
             }
             else
             {
-                Size -= 10; 
-            }   
+                Size -= 10;
+            }
         }
-        public void Draw(Graphics Graphics)
+
+        public override void Draw(Graphics graphics)
         {
             var smallCircleSize = Size - 50;
             var y1 = Point.Y + (Size - smallCircleSize) / 2;
             var x1 = Point.X + (Size - smallCircleSize) / 2;
-            Graphics.DrawEllipse(Pen, x1, y1, smallCircleSize, smallCircleSize);
-            Graphics.DrawEllipse(Pen, Point.X, Point.Y, Size, Size);
+            graphics.DrawEllipse(Pen, x1, y1, smallCircleSize, smallCircleSize);
+            graphics.DrawEllipse(Pen, Point.X, Point.Y, Size, Size);
         }
     }
 }

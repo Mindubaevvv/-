@@ -20,7 +20,9 @@ namespace Laba_one.Shapes
             Size = size;
         }
 
-        public abstract void Resize();
-        public abstract void Draw();
+        public abstract void Resize(Resizing resizing);
+        public abstract void Draw(Graphics graphics);
+        public abstract void Move(Direction direction);
+
     }
 }
