@@ -5,12 +5,8 @@ using System.Text;
 
 namespace Laba_one.Shapes
 {
-    internal class Ellipse
+    class Ellipse : Circle
     {
-        private int X;
-        private int Y;
-        private int Size;
-        private Pen Pen;
 
         public Ellipse(Pen pen, int x, int y, int size)
         {

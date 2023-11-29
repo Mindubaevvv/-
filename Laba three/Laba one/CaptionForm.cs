@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Security.Policy;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-using ShapesClassLibrary;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace Laba_one
 {
@@ -19,6 +19,7 @@ namespace Laba_one
         List<Ellipse> Ellipses;
         List<Square> Squares;
         List<Triangle> Triangles;
+        List<Rhomb> Rhombes;
 
         public CaptionForm()
         {
@@ -31,6 +32,7 @@ namespace Laba_one
             Ellipses = new List<Ellipse>();
             Squares = new List<Square>();
             Triangles = new List<Triangle>();
+            Rhombes = new List<Rhomb>();
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -49,6 +51,9 @@ namespace Laba_one
                 case ShapeTypes.Triangle:
                     DrawTriangle(count);
                     break;
+                case ShapeTypes.Rhomb:
+                    DrawRhomb(count); 
+                    break;
             }
         }
         private void DrawWithNewPosition(ShapeTypes selectedShape, Direction direction)
@@ -63,6 +68,9 @@ namespace Laba_one
                     break;
                 case ShapeTypes.Triangle:
                     MoveAndDrawTriangle(direction);
+                    break;
+                case ShapeTypes.Rhomb:
+                    MoveAndDrawRhomb(direction);
                     break;
                 default:
                     MoveAndDrawEllipse(direction);
@@ -84,6 +92,10 @@ namespace Laba_one
             else if (btnSquare.Checked)
             {
                 return ShapeTypes.Square;
+            }
+            else if (btnRhomb.Checked)
+            {
+                return ShapeTypes.Rhomb;
             }
             else return ShapeTypes.Triangle;
         }
@@ -163,6 +175,29 @@ namespace Laba_one
             }
 
         }
+        private void DrawRhomb(int count)
+        {
+            Rhombes.Clear();
+
+            for (int i = 0; i < count; i++)
+            {
+                var rhombSize = Random.Next(100, 250);
+                var x = Random.Next(0, PictureBox.Width - rhombSize);
+                var y = Random.Next(0, PictureBox.Height - rhombSize);
+                Point point1 = new Point(x + rhombSize / 2, y);
+                Point point2 = new Point(x + rhombSize, y + rhombSize / 2);
+                Point point3 = new Point(x + rhombSize / 2, y + rhombSize);
+                Point point4 = new Point(x, y + rhombSize / 2);
+
+                Point[] points = { point1, point2, point3, point4 };
+
+                var rhombes = new Rhomb(Pen, x, y, rhombSize);
+                rhombes.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+
+                Rhombes.Add(rhombes);
+            }
+        }
         private void MoveAndDrawCircle(Direction direction)
         {
             foreach (Circle circle in Circles)
@@ -196,6 +231,16 @@ namespace Laba_one
             {
                 triangle.Move(direction);
                 triangle.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+            }
+        }
+
+        private void MoveAndDrawRhomb(Direction direction)
+        {
+            foreach (Rhomb rhomb in Rhombes)
+            {
+                rhomb.Move(direction);
+                rhomb.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
         }
@@ -270,7 +315,7 @@ namespace Laba_one
             ChangeSize(selectedShape, Resizing.Minus);
         }
 
-        private void ChangeSize(ShapeTypes selectedShape, Resizing resizing) 
+        private void ChangeSize(ShapeTypes selectedShape, Resizing resizing)
         {
             switch (selectedShape)
             {
@@ -282,6 +327,9 @@ namespace Laba_one
                     break;
                 case ShapeTypes.Triangle:
                     ChangeandDrawTriangleSize(resizing);
+                    break;
+                case ShapeTypes.Rhomb:
+                    ChangeandDrawRhombSize(resizing);
                     break;
                 default:
                     ChangeandDrawEllipseSize(resizing);
@@ -325,6 +373,19 @@ namespace Laba_one
                 triangle.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
+        }
+        private void ChangeandDrawRhombSize(Resizing resizing)
+        {
+            foreach (Rhomb rhomb in Rhombes)
+            {
+                rhomb.Resize(resizing);
+                rhomb.Draw(Graphics);
+                PictureBox.Image = Bitmap;
+            }
+        }
+        private void btnRhomb_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

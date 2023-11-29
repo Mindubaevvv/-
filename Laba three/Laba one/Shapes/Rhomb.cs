@@ -5,14 +5,10 @@ using System.Text;
 
 namespace Laba_one.Shapes
 {
-    internal class Ellipse
+    class Rhomb : Square
     {
-        private int X;
-        private int Y;
-        private int Size;
-        private Pen Pen;
 
-        public Ellipse(Pen pen, int x, int y, int size)
+        public Rhomb(Pen pen, int x, int y, int size)
         {
             Pen = pen;
             Size = size;
@@ -40,9 +36,26 @@ namespace Laba_one.Shapes
                     break;
             }
         }
+        public void Resize(Resizing resizing)
+        {
+            if (resizing == Resizing.Plus)
+            {
+                Size += 10;
+            }
+            else
+            {
+                Size -= 10;
+            }
+        }
         public void Draw(Graphics Graphics)
         {
-            Graphics.DrawEllipse(Pen, X, Y, Size / 2, Size);
+            Point point1 = new Point(X + Size / 2, Y);
+            Point point2 = new Point(X + Size, Y + Size / 2);
+            Point point3 = new Point(X + Size / 2, Y + Size);
+            Point point4 = new Point(X, Y + Size / 2);
+
+            Point[] points = { point1, point2, point3, point4 };
+            Graphics.DrawPolygon(Pen, points);
         }
     }
 }

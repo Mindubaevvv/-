@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
 
 namespace Laba_one.Shapes
 {
-    internal class Square
+    class Triangle : TFigure
     {
-        private int X;
-        private int Y;
-        private int Size;
-        private Pen Pen;
 
-        public Square(Pen pen, int x, int y, int size)
+        public Triangle(Pen pen, int x, int y, int size)
         {
             Pen = pen;
             Size = size;
@@ -40,20 +37,27 @@ namespace Laba_one.Shapes
                     break;
             }
         }
+
         public void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
             {
-               Size += 10;
+                Size += 10;
             }
             else
             {
                 Size -= 10;
             }
         }
+
         public void Draw(Graphics Graphics)
         {
-            Graphics.DrawRectangle(Pen, X, Y, Size, Size);
+            Point point1 = new Point(X, Y + Size);
+            Point point2 = new Point(X + Size / 2, Y);
+            Point point3 = new Point(X + Size, Y + Size);
+
+            Point[] points = { point1, point2, point3 };
+            Graphics.DrawPolygon(Pen, points);
         }
     }
 }

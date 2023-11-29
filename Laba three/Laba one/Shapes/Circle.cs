@@ -7,13 +7,13 @@ using System.Windows.Forms;
 
 namespace Laba_one.Shapes
 {
-    internal class Circle
+    class Circle : TFigure
     {
-        private CirclePoint Point;
-        private int Size;
-        private Pen Pen;
-
-        public Circle(Pen pen, int x, int y, int size, int pictureBoxHeight, int pictureBoxWidth)
+        protected int MaxX;
+        protected int MinX;
+        protected int MaxY;
+        protected int MinY;
+        public Circle(Pen pen, int x, int y, int size, int pictureBoxHeight, int pictureBoxWidth) : base()
         {
             Pen = pen;
             Size = size;

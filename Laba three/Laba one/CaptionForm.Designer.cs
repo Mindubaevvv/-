@@ -42,6 +42,7 @@
             btnLeft = new System.Windows.Forms.Button();
             btnPlus = new System.Windows.Forms.Button();
             btnMinus = new System.Windows.Forms.Button();
+            btnRhomb = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)PictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -107,7 +108,7 @@
             // 
             btnEllipse.AutoSize = true;
             btnEllipse.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnEllipse.Location = new System.Drawing.Point(568, 645);
+            btnEllipse.Location = new System.Drawing.Point(592, 647);
             btnEllipse.Name = "btnEllipse";
             btnEllipse.Size = new System.Drawing.Size(97, 29);
             btnEllipse.TabIndex = 6;
@@ -118,7 +119,7 @@
             // 
             btnSquare.AutoSize = true;
             btnSquare.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnSquare.Location = new System.Drawing.Point(568, 567);
+            btnSquare.Location = new System.Drawing.Point(592, 567);
             btnSquare.Name = "btnSquare";
             btnSquare.Size = new System.Drawing.Size(105, 29);
             btnSquare.TabIndex = 7;
@@ -186,7 +187,7 @@
             // 
             // btnPlus
             // 
-            btnPlus.Location = new System.Drawing.Point(734, 567);
+            btnPlus.Location = new System.Drawing.Point(760, 567);
             btnPlus.Name = "btnPlus";
             btnPlus.Size = new System.Drawing.Size(94, 33);
             btnPlus.TabIndex = 13;
@@ -196,7 +197,7 @@
             // 
             // btnMinus
             // 
-            btnMinus.Location = new System.Drawing.Point(734, 645);
+            btnMinus.Location = new System.Drawing.Point(760, 642);
             btnMinus.Name = "btnMinus";
             btnMinus.Size = new System.Drawing.Size(94, 33);
             btnMinus.TabIndex = 14;
@@ -204,11 +205,24 @@
             btnMinus.UseVisualStyleBackColor = true;
             btnMinus.Click += btnMinus_Click;
             // 
+            // btnRhomb
+            // 
+            btnRhomb.AutoSize = true;
+            btnRhomb.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnRhomb.Location = new System.Drawing.Point(498, 605);
+            btnRhomb.Name = "btnRhomb";
+            btnRhomb.Size = new System.Drawing.Size(79, 29);
+            btnRhomb.TabIndex = 15;
+            btnRhomb.Text = "Ромб";
+            btnRhomb.UseVisualStyleBackColor = true;
+            btnRhomb.CheckedChanged += btnRhomb_CheckedChanged;
+            // 
             // CaptionForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1046, 702);
+            Controls.Add(btnRhomb);
             Controls.Add(btnMinus);
             Controls.Add(btnPlus);
             Controls.Add(btnLeft);
@@ -247,5 +261,6 @@
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Button btnMinus;
+        private System.Windows.Forms.RadioButton btnRhomb;
     }
 }

@@ -9,7 +9,8 @@ namespace Laba_one.Shapes
         Circle,
         Ellipse,
         Square,
-        Triangle
+        Triangle,
+        Rhomb
     }
     enum Direction
     {
