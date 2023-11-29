@@ -8,14 +8,15 @@ namespace Laba_one.Shapes
     class Square : TFigure
     {
 
-        public Square(Pen pen, int x, int y, int size)
+        public Square(Pen pen, int x, int y, int size) : base(pen, x, y, size)
         {
             Pen = pen;
             Size = size;
             X = x;
             Y = y;
         }
-        public void Move(Direction direction)
+
+        public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -36,20 +37,21 @@ namespace Laba_one.Shapes
                     break;
             }
         }
-        public void Resize(Resizing resizing)
+
+        public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
             {
-               Size += 10;
+                Size += 10;
             }
             else
             {
                 Size -= 10;
             }
         }
-        public void Draw(Graphics Graphics)
+        public override void Draw(Graphics graphics)
         {
-            Graphics.DrawRectangle(Pen, X, Y, Size, Size);
+            graphics.DrawRectangle(Pen, X, Y, Size, Size);
         }
     }
 }

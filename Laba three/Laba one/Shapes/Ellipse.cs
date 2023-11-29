@@ -8,14 +8,14 @@ namespace Laba_one.Shapes
     class Ellipse : Circle
     {
 
-        public Ellipse(Pen pen, int x, int y, int size)
+        public Ellipse(Pen pen, int x, int y, int size) : base(pen, x, y, size, 0, 0)
         {
             Pen = pen;
             Size = size;
             X = x;
             Y = y;
         }
-        public void Move(Direction direction)
+        public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -36,8 +36,7 @@ namespace Laba_one.Shapes
                     break;
             }
         }
-
-        public void Resize(Resizing resizing)
+        public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
             {
@@ -48,9 +47,9 @@ namespace Laba_one.Shapes
                 Size -= 10;
             }
         }
-        public void Draw(Graphics Graphics)
+        public override void Draw(Graphics graphics)
         {
-            Graphics.DrawEllipse(Pen, X, Y, Size / 2, Size);
+            graphics.DrawEllipse(Pen, X, Y, Size / 2, Size);
         }
     }
 }

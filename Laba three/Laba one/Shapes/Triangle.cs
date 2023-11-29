@@ -9,14 +9,14 @@ namespace Laba_one.Shapes
     class Triangle : TFigure
     {
 
-        public Triangle(Pen pen, int x, int y, int size)
+        public Triangle(Pen pen, int x, int y, int size) : base(pen, x, y, size)
         {
             Pen = pen;
             Size = size;
             X = x;
             Y = y;
         }
-        public void Move(Direction direction)
+        public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -38,7 +38,7 @@ namespace Laba_one.Shapes
             }
         }
 
-        public void Resize(Resizing resizing)
+        public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
             {
@@ -50,7 +50,7 @@ namespace Laba_one.Shapes
             }
         }
 
-        public void Draw(Graphics Graphics)
+        public override void Draw(Graphics Graphics)
         {
             Point point1 = new Point(X, Y + Size);
             Point point2 = new Point(X + Size / 2, Y);

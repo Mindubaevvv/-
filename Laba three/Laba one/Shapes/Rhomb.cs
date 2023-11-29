@@ -8,14 +8,14 @@ namespace Laba_one.Shapes
     class Rhomb : Square
     {
 
-        public Rhomb(Pen pen, int x, int y, int size)
+        public Rhomb(Pen pen, int x, int y, int size) : base(pen, x, y, size)
         {
             Pen = pen;
             Size = size;
             X = x;
             Y = y;
         }
-        public void Move(Direction direction)
+        public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -36,7 +36,7 @@ namespace Laba_one.Shapes
                     break;
             }
         }
-        public void Resize(Resizing resizing)
+        public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
             {
@@ -47,7 +47,7 @@ namespace Laba_one.Shapes
                 Size -= 10;
             }
         }
-        public void Draw(Graphics Graphics)
+        public override void Draw(Graphics Graphics)
         {
             Point point1 = new Point(X + Size / 2, Y);
             Point point2 = new Point(X + Size, Y + Size / 2);
