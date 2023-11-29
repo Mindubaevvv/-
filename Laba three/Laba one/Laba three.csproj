@@ -13,4 +13,8 @@
     <None Remove="Shapes\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShapesClassLibrary\ShapesClassLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

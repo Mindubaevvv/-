@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Security.Policy;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using ShapesClassLibrary;
 
 namespace Laba_one
 {
