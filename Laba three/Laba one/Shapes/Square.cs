@@ -37,7 +37,6 @@ namespace Laba_one.Shapes
                     break;
             }
         }
-
         public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
