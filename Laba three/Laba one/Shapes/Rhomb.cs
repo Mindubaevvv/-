@@ -55,7 +55,7 @@ namespace Laba_one.Shapes
             Point point4 = new Point(X, Y + Size / 2);
 
             Point[] points = { point1, point2, point3, point4 };
-            Graphics.DrawPolygon(Pen, points);
+            Graphics.DrawPolygon(new Pen(Color.DarkOrchid, 5), points);
         }
     }
 }

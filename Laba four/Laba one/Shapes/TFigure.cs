@@ -1,22 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Text;
+using System.Drawing;
 
 namespace Laba_one.Shapes
 {
-    class Square : TFigure
+    abstract class TFigure
     {
+        protected int X;
+        protected int Y;
+        protected int Size;
+        protected Pen Pen;
 
-        public Square(Pen pen, int x, int y, int size) : base(pen, x, y, size)
+        public TFigure(Pen pen, int x, int y, int size)
         {
             Pen = pen;
-            Size = size;
             X = x;
             Y = y;
+            Size = size;
         }
 
-        public override void Move(Direction direction)
+        public virtual void Resize() { }
+        public virtual void Draw() { }
+        public void Move(Direction direction)
         {
             switch (direction)
             {
@@ -36,21 +42,8 @@ namespace Laba_one.Shapes
                     Y += 20;
                     break;
             }
+            Draw();
         }
-        public override void Resize(Resizing resizing)
-        {
-            if (resizing == Resizing.Plus)
-            {
-                Size += 10;
-            }
-            else
-            {
-                Size -= 10;
-            }
-        }
-        public override void Draw(Graphics graphics)
-        {
-            graphics.DrawRectangle(new Pen(Color.DarkRed, 5), X, Y, Size, Size);
-        }
+
     }
 }

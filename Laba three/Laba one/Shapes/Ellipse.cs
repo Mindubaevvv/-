@@ -7,7 +7,6 @@ namespace Laba_one.Shapes
 {
     class Ellipse : Circle
     {
-
         public Ellipse(Pen pen, int x, int y, int size) : base(pen, x, y, size, 0, 0)
         {
             Pen = pen;
@@ -49,7 +48,7 @@ namespace Laba_one.Shapes
         }
         public override void Draw(Graphics graphics)
         {
-            graphics.DrawEllipse(Pen, X, Y, Size / 2, Size);
+            graphics.DrawEllipse(new Pen(Color.DarkBlue, 5), X, Y, Size / 2, Size);
         }
     }
 }

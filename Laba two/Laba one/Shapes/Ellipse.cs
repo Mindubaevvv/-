@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laba_one.Shapes.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Laba_one.Shapes
         private Pen Pen;
 
         public Ellipse(Pen pen, int x, int y, int size)
-        {
+        { 
             Pen = pen;
             Size = size;
             X = x;

@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Reflection;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Laba_one.Shapes
 {
-    class Square : TFigure
+    class Triangle : TFigure
     {
 
-        public Square(Pen pen, int x, int y, int size) : base(pen, x, y, size)
+        public Triangle(Pen pen, int x, int y, int size) : base(pen, x, y, size)
         {
             Pen = pen;
             Size = size;
             X = x;
             Y = y;
         }
-
-        public override void Move(Direction direction)
+        /*public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -36,7 +37,8 @@ namespace Laba_one.Shapes
                     Y += 20;
                     break;
             }
-        }
+        }*/
+
         public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
@@ -48,9 +50,15 @@ namespace Laba_one.Shapes
                 Size -= 10;
             }
         }
-        public override void Draw(Graphics graphics)
+
+        public void Draw(Graphics graphics)
         {
-            graphics.DrawRectangle(new Pen(Color.DarkRed, 5), X, Y, Size, Size);
+            Point point1 = new Point(X, Y + Size);
+            Point point2 = new Point(X + Size / 2, Y);
+            Point point3 = new Point(X + Size, Y + Size);
+
+            Point[] points = { point1, point2, point3 };
+            graphics.DrawPolygon(new Pen(Color.DarkOrange, 5), points);
         }
     }
 }

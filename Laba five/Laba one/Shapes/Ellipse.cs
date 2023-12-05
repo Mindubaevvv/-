@@ -5,18 +5,16 @@ using System.Text;
 
 namespace Laba_one.Shapes
 {
-    class Square : TFigure
+    class Ellipse : Circle
     {
-
-        public Square(Pen pen, int x, int y, int size) : base(pen, x, y, size)
+        public Ellipse(Pen pen, int x, int y, int size) : base(pen, x, y, size, 0, 0)
         {
             Pen = pen;
             Size = size;
             X = x;
             Y = y;
         }
-
-        public override void Move(Direction direction)
+        /*public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -36,7 +34,7 @@ namespace Laba_one.Shapes
                     Y += 20;
                     break;
             }
-        }
+        }*/
         public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
@@ -48,9 +46,9 @@ namespace Laba_one.Shapes
                 Size -= 10;
             }
         }
-        public override void Draw(Graphics graphics)
+        public void Draw(Graphics graphics)
         {
-            graphics.DrawRectangle(new Pen(Color.DarkRed, 5), X, Y, Size, Size);
+            graphics.DrawEllipse(new Pen(Color.DarkBlue, 5), X, Y, Size / 2, Size);
         }
     }
 }

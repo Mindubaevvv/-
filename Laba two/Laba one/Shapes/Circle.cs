@@ -9,7 +9,7 @@ namespace Laba_one.Shapes
 {
     internal class Circle
     {
-        private CirclePoint Point;
+        private ClassPoint Point;
         private int Size;
         private Pen Pen;
 
@@ -17,7 +17,7 @@ namespace Laba_one.Shapes
         {
             Pen = pen;
             Size = size;
-            Point = new CirclePoint(x, y, pictureBoxHeight - Size, pictureBoxWidth - Size);
+            Point = new Helpers.ClassPoint(x, y, pictureBoxHeight - Size, pictureBoxWidth - Size);
         }
         public void Move(Direction direction)
         {

@@ -20,7 +20,7 @@ namespace Laba_one.Shapes
         {           
             Point = new CirclePoint(x, y, pictureBoxHeight - Size, pictureBoxWidth - Size);
         }
-        public override void Move(Direction direction)
+        /*public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -68,7 +68,7 @@ namespace Laba_one.Shapes
                     }
                     break;
             }
-        }
+        }*/
        
         public override void Resize(Resizing resizing)
         {
@@ -82,12 +82,12 @@ namespace Laba_one.Shapes
             }
         }
 
-        public override void Draw(Graphics graphics)
+        public void Draw(Graphics graphics)
         {
             var smallCircleSize = Size - 50;
             var y1 = Point.Y + (Size - smallCircleSize) / 2;
             var x1 = Point.X + (Size - smallCircleSize) / 2;
-            graphics.DrawEllipse(new Pen(Color.DarkGreen, 5), x1, y1, smallCircleSize, smallCircleSize);
+            //graphics.DrawEllipse(new Pen(Color.DarkGreen, 5), x1, y1, smallCircleSize, smallCircleSize);
             graphics.DrawEllipse(new Pen(Color.DarkGreen, 5), Point.X, Point.Y, Size, Size);
         }
     }

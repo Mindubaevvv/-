@@ -16,7 +16,7 @@ namespace Laba_one.Shapes
             Y = y;
         }
 
-        public override void Move(Direction direction)
+        /*public override void Move(Direction direction)
         {
             switch (direction)
             {
@@ -36,7 +36,7 @@ namespace Laba_one.Shapes
                     Y += 20;
                     break;
             }
-        }
+        }*/
         public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
@@ -48,7 +48,7 @@ namespace Laba_one.Shapes
                 Size -= 10;
             }
         }
-        public override void Draw(Graphics graphics)
+        public void Draw(Graphics graphics)
         {
             graphics.DrawRectangle(new Pen(Color.DarkRed, 5), X, Y, Size, Size);
         }
