@@ -206,7 +206,7 @@ namespace Laba_one
         {
             foreach (Circle circle in Circles)
             {
-                circle.Move(direction);
+                circle.Move(direction, Graphics);
                 circle.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
@@ -215,7 +215,7 @@ namespace Laba_one
         {
             foreach (Ellipse ellipse in Ellipses)
             {
-                ellipse.Move(direction);
+                ellipse.Move(direction, Graphics);
                 ellipse.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
@@ -224,7 +224,7 @@ namespace Laba_one
         {
             foreach (Square square in Squares)
             {
-                square.Move(direction);
+                square.Move(direction, Graphics);
                 square.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
@@ -233,7 +233,7 @@ namespace Laba_one
         {
             foreach (Triangle triangle in Triangles)
             {
-                triangle.Move(direction);
+                triangle.Move(direction, Graphics);
                 triangle.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
@@ -243,7 +243,7 @@ namespace Laba_one
         {
             foreach (Rhomb rhomb in Rhombes)
             {
-                rhomb.Move(direction);
+                rhomb.Move(direction, Graphics);
                 rhomb.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
