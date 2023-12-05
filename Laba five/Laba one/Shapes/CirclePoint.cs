@@ -23,5 +23,6 @@ namespace Laba_one.Shapes.Helpers
             MaxY = pictureBoxHeight;
             MinY = 0;
         }
+
     }
 }

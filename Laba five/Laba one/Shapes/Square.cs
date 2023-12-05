@@ -7,7 +7,6 @@ namespace Laba_one.Shapes
 {
     class Square : TFigure
     {
-
         public Square(Pen pen, int x, int y, int size) : base(pen, x, y, size)
         {
             Pen = pen;
@@ -15,29 +14,7 @@ namespace Laba_one.Shapes
             X = x;
             Y = y;
         }
-
-        /*public override void Move(Direction direction)
-        {
-            switch (direction)
-            {
-                case Direction.Left:
-                    X -= 20;
-                    break;
-
-                case Direction.Right:
-                    X += 20;
-                    break;
-
-                case Direction.Up:
-                    Y -= 20;
-                    break;
-
-                default: // down
-                    Y += 20;
-                    break;
-            }
-        }*/
-        public override void Resize(Resizing resizing)
+        public void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
             {

@@ -7,15 +7,13 @@ namespace Laba_one.Shapes
 {
     abstract class TFigure
     {
-        // нужно сделать один массив всех фигур, с которым я буду взаимодействовать.
-        // нужно добавить функционал: добавления, показа, стирания, уничтножения всех фигур в массиве.
-        // нужна возможность перемещать все фигуры.
-
-
         protected int X;
         protected int Y;
         protected int Size;
         protected Pen Pen;
+
+        // нужно сделать один массив всех фигур, с которым я будешь взаимодействовать.
+        // нужно добавить функционал добавления, показа, стирания, уничтножения всех фигур в массиве.
 
         public TFigure(Pen pen, int x, int y, int size)
         {
@@ -25,7 +23,7 @@ namespace Laba_one.Shapes
             Size = size;
         }
 
-        public abstract void Resize(Resizing resizing);
+        public virtual void Resize() { }
         public virtual void Draw() { }
         public void Move(Direction direction)
         {

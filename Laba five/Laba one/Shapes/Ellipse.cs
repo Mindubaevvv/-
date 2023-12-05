@@ -14,41 +14,9 @@ namespace Laba_one.Shapes
             X = x;
             Y = y;
         }
-        /*public override void Move(Direction direction)
+        public new void Draw(Graphics graphics)
         {
-            switch (direction)
-            {
-                case Direction.Left:
-                    X -= 20;
-                    break;
-
-                case Direction.Right:
-                    X += 20;
-                    break;
-
-                case Direction.Up:
-                    Y -= 20;
-                    break;
-
-                default: // down
-                    Y += 20;
-                    break;
-            }
-        }*/
-        public override void Resize(Resizing resizing)
-        {
-            if (resizing == Resizing.Plus)
-            {
-                Size += 10;
-            }
-            else
-            {
-                Size -= 10;
-            }
-        }
-        public void Draw(Graphics graphics)
-        {
-            graphics.DrawEllipse(new Pen(Color.DarkBlue, 5), X, Y, Size / 2, Size);
+            graphics.DrawEllipse(new Pen(Color.DarkBlue, 5), X, Y, Size, Size / 2);
         }
     }
 }

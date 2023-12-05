@@ -290,7 +290,7 @@ namespace Laba_one
         }
         #endregion
 
-        #region move
+        #region Move
         private void btnUp_Click(object sender, EventArgs e)
         {
             ClearPictureBox();
