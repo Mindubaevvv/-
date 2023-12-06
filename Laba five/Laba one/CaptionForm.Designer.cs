@@ -44,6 +44,7 @@
             btnPlus = new System.Windows.Forms.Button();
             btnMinus = new System.Windows.Forms.Button();
             btnRhomb = new System.Windows.Forms.RadioButton();
+            btnHide = new System.Windows.Forms.Button();
             btnShow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)PictureBox).BeginInit();
             SuspendLayout();
@@ -224,14 +225,26 @@
             btnRhomb.Text = "Ромб";
             btnRhomb.UseVisualStyleBackColor = true;
             // 
+            // btnHide
+            // 
+            btnHide.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            btnHide.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnHide.Location = new System.Drawing.Point(895, 594);
+            btnHide.Name = "btnHide";
+            btnHide.Size = new System.Drawing.Size(94, 33);
+            btnHide.TabIndex = 16;
+            btnHide.Text = "Скрыть";
+            btnHide.UseVisualStyleBackColor = false;
+            btnHide.Click += btnHide_Click_1;
+            // 
             // btnShow
             // 
             btnShow.BackColor = System.Drawing.SystemColors.ActiveBorder;
             btnShow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnShow.Location = new System.Drawing.Point(895, 559);
+            btnShow.Location = new System.Drawing.Point(895, 537);
             btnShow.Name = "btnShow";
             btnShow.Size = new System.Drawing.Size(94, 33);
-            btnShow.TabIndex = 16;
+            btnShow.TabIndex = 17;
             btnShow.Text = "Показать";
             btnShow.UseVisualStyleBackColor = false;
             btnShow.Click += btnShow_Click;
@@ -242,6 +255,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1046, 702);
             Controls.Add(btnShow);
+            Controls.Add(btnHide);
             Controls.Add(btnRhomb);
             Controls.Add(btnMinus);
             Controls.Add(btnPlus);
@@ -282,6 +296,7 @@
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.RadioButton btnRhomb;
+        private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Button btnShow;
     }
 }
