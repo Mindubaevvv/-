@@ -12,9 +12,6 @@ namespace Laba_one.Shapes
         protected int Size;
         protected Pen Pen;
 
-        // нужно сделать один массив всех фигур, с которым я будешь взаимодействовать.
-        // нужно добавить функционал добавления, показа, стирания, уничтножения всех фигур в массиве.
-
         public TFigure(Pen pen, int x, int y, int size)
         {
             Pen = pen;

@@ -44,6 +44,7 @@
             btnPlus = new System.Windows.Forms.Button();
             btnMinus = new System.Windows.Forms.Button();
             btnRhomb = new System.Windows.Forms.RadioButton();
+            btnShow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)PictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -223,11 +224,24 @@
             btnRhomb.Text = "Ромб";
             btnRhomb.UseVisualStyleBackColor = true;
             // 
+            // btnShow
+            // 
+            btnShow.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            btnShow.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnShow.Location = new System.Drawing.Point(895, 559);
+            btnShow.Name = "btnShow";
+            btnShow.Size = new System.Drawing.Size(94, 33);
+            btnShow.TabIndex = 16;
+            btnShow.Text = "Показать";
+            btnShow.UseVisualStyleBackColor = false;
+            btnShow.Click += btnShow_Click;
+            // 
             // FigureApp
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1046, 702);
+            Controls.Add(btnShow);
             Controls.Add(btnRhomb);
             Controls.Add(btnMinus);
             Controls.Add(btnPlus);
@@ -268,5 +282,6 @@
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.RadioButton btnRhomb;
+        private System.Windows.Forms.Button btnShow;
     }
 }
