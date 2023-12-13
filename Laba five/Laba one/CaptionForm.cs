@@ -2,10 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Security.Policy;
+using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace Laba_one
 {
@@ -15,7 +13,7 @@ namespace Laba_one
         Graphics Graphics;
         Pen Pen;
         Random Random;
-        List<TFigure> Figures;
+        TFigure[] Figures; // объявляем массив элементов типа TFigure
 
         public FigureApp()
         {
@@ -24,7 +22,9 @@ namespace Laba_one
             Graphics = Graphics.FromImage(Bitmap);
             Pen = new Pen(Color.Black, 5);
             Random = new Random();
-            Figures = new List<TFigure>();
+
+            Figures = new TFigure[0]; // иницализация нового поля. говорим, что массив пустой - 0 элементов.
+                                      // Размер у такого массива никогда не меняется!!!
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -94,19 +94,16 @@ namespace Laba_one
         #region Draw
         private void DrawCircle(int count)
         {
-            var figuresWithoutCircles = new List<TFigure>();
+            var figuresWithoutCircles = new TFigure[0];
             foreach (var figure in Figures)
             {
                 if (!(figure is Circle))
                 {
-                    figuresWithoutCircles.Add(figure);
+                    figuresWithoutCircles = figuresWithoutCircles.Append(figure).ToArray();
                 }
             }
 
             Figures = figuresWithoutCircles;
-
-            //Circles.Clear();
-            //Figures.Clear();
 
             for (int i = 0; i < count; i++)
             {
@@ -118,8 +115,9 @@ namespace Laba_one
                 circle.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                Figures.Add(circle);
+                Figures = Figures.Append(circle).ToArray();
             }
+
         }
 
         private void DrawEllipse(int count)
@@ -133,7 +131,7 @@ namespace Laba_one
                 }
             }
 
-            Figures = figuresWithoutEllipses;
+            Figures = figuresWithoutEllipses.ToArray();
 
             for (int i = 0; i < count; i++)
             {
@@ -145,7 +143,7 @@ namespace Laba_one
                 ellipse.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                Figures.Add(ellipse);
+                Figures = Figures.Append(ellipse).ToArray();
             }
         }
 
@@ -160,7 +158,7 @@ namespace Laba_one
                 }
             }
 
-            Figures = figuresWithoutSquares;
+            Figures = figuresWithoutSquares.ToArray();
 
             for (int i = 0; i < count; i++)
             {
@@ -172,7 +170,7 @@ namespace Laba_one
                 squares.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                Figures.Add(squares);
+                Figures = Figures.Append(squares).ToArray();
             }
         }
         private void DrawTriangle(int count)
@@ -186,24 +184,19 @@ namespace Laba_one
                 }
             }
 
-            Figures = figuresWithoutTriangles;
+            Figures = figuresWithoutTriangles.ToArray(); ;
 
             for (int i = 0; i < count; i++)
             {
                 var triangleSize = Random.Next(100, 250);
                 var x = Random.Next(0, PictureBox.Width - triangleSize);
-                var y = Random.Next(0, PictureBox.Height - triangleSize);
-                Point point1 = new Point(x, y + triangleSize);
-                Point point2 = new Point(x + triangleSize / 2, y);
-                Point point3 = new Point(x + triangleSize, y + triangleSize);
-
-                Point[] points = { point1, point2, point3 };
+                var y = Random.Next(0, PictureBox.Height - triangleSize);              
 
                 var triangles = new Triangle(Pen, x, y, triangleSize);
                 triangles.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                Figures.Add(triangles);
+                Figures = Figures.Append(triangles).ToArray();
             }
 
         }
@@ -218,25 +211,19 @@ namespace Laba_one
                 }
             }
 
-            Figures = figuresWithoutRhombes;
+            Figures = figuresWithoutRhombes.ToArray();
 
             for (int i = 0; i < count; i++)
             {
                 var rhombSize = Random.Next(100, 250);
                 var x = Random.Next(0, PictureBox.Width - rhombSize);
                 var y = Random.Next(0, PictureBox.Height - rhombSize);
-                Point point1 = new Point(x + rhombSize / 2, y);
-                Point point2 = new Point(x + rhombSize, y + rhombSize / 2);
-                Point point3 = new Point(x + rhombSize / 2, y + rhombSize);
-                Point point4 = new Point(x, y + rhombSize / 2);
-
-                Point[] points = { point1, point2, point3, point4 };
 
                 var rhombes = new Rhomb(Pen, x, y, rhombSize);
                 rhombes.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                Figures.Add(rhombes);
+                Figures = Figures.Append(rhombes).ToArray();
             }
         }
         #endregion
@@ -357,7 +344,7 @@ namespace Laba_one
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Figures.Clear();
+            Figures = new TFigure[0];
             PictureBox.Image = null;
         }
         private void btnPlus_Click(object sender, EventArgs e)
