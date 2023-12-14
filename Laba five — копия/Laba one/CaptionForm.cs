@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Security.Policy;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Laba_one
@@ -13,8 +13,7 @@ namespace Laba_one
         Graphics Graphics;
         Pen Pen;
         Random Random;
-
-        ContainerArr FigureArr; // храним все фигуры тут
+        TFigure[] Figures; 
 
         public FigureApp()
         {
@@ -23,7 +22,8 @@ namespace Laba_one
             Graphics = Graphics.FromImage(Bitmap);
             Pen = new Pen(Color.Black, 5);
             Random = new Random();
-            FigureArr = new ContainerArr();
+
+            Figures = new TFigure[0]; 
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -93,18 +93,16 @@ namespace Laba_one
         #region Draw
         private void DrawCircle(int count)
         {
-            var figuresWithoutCircles = new ContainerList();
-            var figures = FigureArr.Get();
-
-            foreach (var figure in figures)
+            var figuresWithoutCircles = new TFigure[0];
+            foreach (var figure in Figures)
             {
                 if (!(figure is Circle))
                 {
-                    figuresWithoutCircles.Add(figure);
+                    figuresWithoutCircles = figuresWithoutCircles.Append(figure).ToArray();
                 }
             }
 
-            FigureArr.Set(figuresWithoutCircles.Get().ToArray());
+            Figures = figuresWithoutCircles.ToArray();
 
             for (int i = 0; i < count; i++)
             {
@@ -116,23 +114,23 @@ namespace Laba_one
                 circle.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                FigureArr.Add(circle);
+                Figures = Figures.Append(circle).ToArray();
             }
+
         }
 
         private void DrawEllipse(int count)
         {
-            var figuresWithoutEllipses = new ContainerList();
-            var figures = FigureArr.Get();
-            foreach (var figure in figures)
+            var figuresWithoutEllipses = new TFigure[0];
+            foreach (var figure in Figures)
             {
                 if (!(figure is Ellipse))
                 {
-                    figuresWithoutEllipses.Add(figure);
+                    figuresWithoutEllipses = figuresWithoutEllipses.Append(figure).ToArray();
                 }
             }
 
-            FigureArr.Set(figuresWithoutEllipses.Get().ToArray());
+            Figures = figuresWithoutEllipses.ToArray();
 
             for (int i = 0; i < count; i++)
             {
@@ -144,23 +142,22 @@ namespace Laba_one
                 ellipse.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                FigureArr.Add(ellipse);
+                Figures = Figures.Append(ellipse).ToArray();
             }
         }
 
         private void DrawSquare(int count)
         {
-            var figuresWithoutSquares = new ContainerList();
-            var figures = FigureArr.Get();
-            foreach (var figure in figures)
+            var figuresWithoutSquares = new TFigure[0];
+            foreach (var figure in Figures)
             {
                 if (!(figure is Square))
                 {
-                    figuresWithoutSquares.Add(figure);
+                    figuresWithoutSquares = figuresWithoutSquares.Append(figure).ToArray();
                 }
             }
 
-            FigureArr.Set(figuresWithoutSquares.Get().ToArray());
+            Figures = figuresWithoutSquares.ToArray();
 
             for (int i = 0; i < count; i++)
             {
@@ -172,73 +169,60 @@ namespace Laba_one
                 squares.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                FigureArr.Add(squares);
+                Figures = Figures.Append(squares).ToArray();
             }
         }
         private void DrawTriangle(int count)
         {
-            var figuresWithoutTriangles = new ContainerList();
-            var figures = FigureArr.Get();
-            foreach (var figure in figures)
+            var figuresWithoutTriangles = new TFigure[0];
+            foreach (var figure in Figures)
             {
                 if (!(figure is Triangle))
                 {
-                    figuresWithoutTriangles.Add(figure);
+                    figuresWithoutTriangles = figuresWithoutTriangles.Append(figure).ToArray();
                 }
             }
 
-            FigureArr.Set(figuresWithoutTriangles.Get().ToArray());
+            Figures = figuresWithoutTriangles.ToArray(); ;
 
             for (int i = 0; i < count; i++)
             {
                 var triangleSize = Random.Next(100, 250);
                 var x = Random.Next(0, PictureBox.Width - triangleSize);
-                var y = Random.Next(0, PictureBox.Height - triangleSize);
-                Point point1 = new Point(x, y + triangleSize);
-                Point point2 = new Point(x + triangleSize / 2, y);
-                Point point3 = new Point(x + triangleSize, y + triangleSize);
-
-                Point[] points = { point1, point2, point3 };
+                var y = Random.Next(0, PictureBox.Height - triangleSize);              
 
                 var triangles = new Triangle(Pen, x, y, triangleSize);
                 triangles.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                FigureArr.Add(triangles);
+                Figures = Figures.Append(triangles).ToArray();
             }
 
         }
         private void DrawRhomb(int count)
         {
-            var figuresWithoutRhombes = new ContainerList();
-            var figures = FigureArr.Get();
-            foreach (var figure in figures)
+            var figuresWithoutRhombes = new TFigure[0];
+            foreach (var figure in Figures)
             {
                 if (!(figure is Rhomb))
                 {
-                    figuresWithoutRhombes.Add(figure);
+                    figuresWithoutRhombes = figuresWithoutRhombes.Append(figure).ToArray();
                 }
             }
 
-            FigureArr.Set(figuresWithoutRhombes.Get().ToArray());
+            Figures = figuresWithoutRhombes.ToArray();
 
             for (int i = 0; i < count; i++)
             {
                 var rhombSize = Random.Next(100, 250);
                 var x = Random.Next(0, PictureBox.Width - rhombSize);
                 var y = Random.Next(0, PictureBox.Height - rhombSize);
-                Point point1 = new Point(x + rhombSize / 2, y);
-                Point point2 = new Point(x + rhombSize, y + rhombSize / 2);
-                Point point3 = new Point(x + rhombSize / 2, y + rhombSize);
-                Point point4 = new Point(x, y + rhombSize / 2);
-
-                Point[] points = { point1, point2, point3, point4 };
 
                 var rhombes = new Rhomb(Pen, x, y, rhombSize);
                 rhombes.Draw(Graphics);
                 PictureBox.Image = Bitmap;
 
-                FigureArr.Add(rhombes);
+                Figures = Figures.Append(rhombes).ToArray();
             }
         }
         #endregion
@@ -246,8 +230,8 @@ namespace Laba_one
         #region MoveAndDraw
         private void MoveAndDrawCircle(Direction direction)
         {
-            var circles = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var circles = new List<Circle>();
+            foreach (var figure in Figures)
             {
                 if (figure is Circle)
                 {
@@ -255,7 +239,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Circle circle in circles.Get())
+            foreach (Circle circle in circles)
             {
                 circle.Move(direction);
                 circle.Draw(Graphics);
@@ -264,8 +248,8 @@ namespace Laba_one
         }
         private void MoveAndDrawEllipse(Direction direction)
         {
-            var ellipses = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var ellipses = new List<Ellipse>();
+            foreach (var figure in Figures)
             {
                 if (figure is Ellipse)
                 {
@@ -273,7 +257,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Ellipse ellipse in ellipses.Get())
+            foreach (Ellipse ellipse in ellipses)
             {
                 ellipse.Move(direction);
                 ellipse.Draw(Graphics);
@@ -282,8 +266,8 @@ namespace Laba_one
         }
         private void MoveAndDrawSquare(Direction direction)
         {
-            var squares = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var squares = new List<Square>();
+            foreach (var figure in Figures)
             {
                 if (figure is Square)
                 {
@@ -291,7 +275,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Square square in squares.Get())
+            foreach (Square square in squares)
             {
                 square.Move(direction);
                 square.Draw(Graphics);
@@ -300,8 +284,8 @@ namespace Laba_one
         }
         private void MoveAndDrawTriangle(Direction direction)
         {
-            var triangles = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var triangles = new List<Triangle>();
+            foreach (var figure in Figures)
             {
                 if (figure is Triangle)
                 {
@@ -309,7 +293,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Triangle triangle in triangles.Get())
+            foreach (Triangle triangle in triangles)
             {
                 triangle.Move(direction);
                 triangle.Draw(Graphics);
@@ -319,16 +303,16 @@ namespace Laba_one
 
         private void MoveAndDrawRhomb(Direction direction)
         {
-            var rhombesContainer = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var rhombes = new List<Rhomb>();
+            foreach (var figure in Figures)
             {
                 if (figure is Rhomb)
                 {
-                    rhombesContainer.Add((Rhomb)figure);
+                    rhombes.Add((Rhomb)figure);
                 }
             }
 
-            foreach (Rhomb rhomb in rhombesContainer.Get())
+            foreach (Rhomb rhomb in rhombes)
             {
                 rhomb.Move(direction);
                 rhomb.Draw(Graphics);
@@ -359,7 +343,7 @@ namespace Laba_one
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            FigureArr = new ContainerArr();
+            Figures = new TFigure[0];
             PictureBox.Image = null;
         }
         private void btnPlus_Click(object sender, EventArgs e)
@@ -374,6 +358,46 @@ namespace Laba_one
             ClearPictureBox();
             var selectedShape = GetSelectedShape();
             ChangeSize(selectedShape, Resizing.Minus);
+        }
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            foreach (var figure in Figures)
+            {
+                if (figure is Circle)
+                {
+                    var circle = (Circle)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Ellipse)
+                {
+                    var circle = (Ellipse)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Square)
+                {
+                    var circle = (Square)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Triangle)
+                {
+                    var circle = (Triangle)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Rhomb)
+                {
+                    var circle = (Rhomb)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+            }
+        }
+        private void btnHide_Click_1(object sender, EventArgs e)
+        {
+            PictureBox.Image = null;
         }
         #endregion
 
@@ -432,8 +456,8 @@ namespace Laba_one
 
         private void ChangeandDrawCircleSize(Resizing resizing)
         {
-            var circles = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var circles = new List<Circle>();
+            foreach (var figure in Figures)
             {
                 if (figure is Circle)
                 {
@@ -441,7 +465,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Circle circle in circles.Get())
+            foreach (Circle circle in circles)
             {
                 circle.Resize(resizing);
                 circle.Draw(Graphics);
@@ -451,8 +475,8 @@ namespace Laba_one
 
         private void ChangeandDrawEllipseSize(Resizing resizing)
         {
-            var ellipses = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var ellipses = new List<Ellipse>();
+            foreach (var figure in Figures)
             {
                 if (figure is Ellipse)
                 {
@@ -460,7 +484,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Ellipse ellipse in ellipses.Get())
+            foreach (Ellipse ellipse in ellipses)
             {
                 ellipse.Resize(resizing);
                 ellipse.Draw(Graphics);
@@ -469,8 +493,8 @@ namespace Laba_one
         }
         private void ChangeandDrawSquareSize(Resizing resizing)
         {
-            var squares = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var squares = new List<Square>();
+            foreach (var figure in Figures)
             {
                 if (figure is Square)
                 {
@@ -478,7 +502,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Square square in squares.Get())
+            foreach (Square square in squares)
             {
                 square.Resize(resizing);
                 square.Draw(Graphics);
@@ -487,8 +511,8 @@ namespace Laba_one
         }
         private void ChangeandDrawTriangleSize(Resizing resizing)
         {
-            var triangles = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var triangles = new List<Triangle>();
+            foreach (var figure in Figures)
             {
                 if (figure is Triangle)
                 {
@@ -496,7 +520,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Triangle triangle in triangles.Get())
+            foreach (Triangle triangle in triangles)
             {
                 triangle.Resize(resizing);
                 triangle.Draw(Graphics);
@@ -505,8 +529,8 @@ namespace Laba_one
         }
         private void ChangeandDrawRhombSize(Resizing resizing)
         {
-            var rhombes = new ContainerList();
-            foreach (var figure in FigureArr.Get())
+            var rhombes = new List<Rhomb>();
+            foreach (var figure in Figures)
             {
                 if (figure is Rhomb)
                 {
@@ -514,7 +538,7 @@ namespace Laba_one
                 }
             }
 
-            foreach (Rhomb rhomb in rhombes.Get())
+            foreach (Rhomb rhomb in rhombes)
             {
                 rhomb.Resize(resizing);
                 rhomb.Draw(Graphics);
@@ -523,47 +547,5 @@ namespace Laba_one
         }
         #endregion
 
-        private void btnShow_Click(object sender, EventArgs e)
-        {
-            var figures = FigureArr.Get();
-            foreach (var figure in figures)
-            {
-                if (figure is Circle)
-                {
-                    var circle = (Circle)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Ellipse)
-                {
-                    var circle = (Ellipse)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Square)
-                {
-                    var circle = (Square)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Triangle)
-                {
-                    var circle = (Triangle)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Rhomb)
-                {
-                    var circle = (Rhomb)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-            }
-        }
-
-        private void btnHide_Click_1(object sender, EventArgs e)
-        {
-            PictureBox.Image = null;
-        }
     }
 }
