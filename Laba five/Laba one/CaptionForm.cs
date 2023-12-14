@@ -13,7 +13,7 @@ namespace Laba_one
         Graphics Graphics;
         Pen Pen;
         Random Random;
-        TFigure[] Figures; // объявляем массив элементов типа TFigure
+        TFigure[] Figures; 
 
         public FigureApp()
         {
@@ -23,8 +23,7 @@ namespace Laba_one
             Pen = new Pen(Color.Black, 5);
             Random = new Random();
 
-            Figures = new TFigure[0]; // иницализация нового поля. говорим, что массив пустой - 0 элементов.
-                                      // Размер у такого массива никогда не меняется!!!
+            Figures = new TFigure[0]; 
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -103,7 +102,7 @@ namespace Laba_one
                 }
             }
 
-            Figures = figuresWithoutCircles;
+            Figures = figuresWithoutCircles.ToArray();
 
             for (int i = 0; i < count; i++)
             {
@@ -122,12 +121,12 @@ namespace Laba_one
 
         private void DrawEllipse(int count)
         {
-            var figuresWithoutEllipses = new List<TFigure>();
+            var figuresWithoutEllipses = new TFigure[0];
             foreach (var figure in Figures)
             {
                 if (!(figure is Ellipse))
                 {
-                    figuresWithoutEllipses.Add(figure);
+                    figuresWithoutEllipses = figuresWithoutEllipses.Append(figure).ToArray();
                 }
             }
 
@@ -149,12 +148,12 @@ namespace Laba_one
 
         private void DrawSquare(int count)
         {
-            var figuresWithoutSquares = new List<TFigure>();
+            var figuresWithoutSquares = new TFigure[0];
             foreach (var figure in Figures)
             {
                 if (!(figure is Square))
                 {
-                    figuresWithoutSquares.Add(figure);
+                    figuresWithoutSquares = figuresWithoutSquares.Append(figure).ToArray();
                 }
             }
 
@@ -175,12 +174,12 @@ namespace Laba_one
         }
         private void DrawTriangle(int count)
         {
-            var figuresWithoutTriangles = new List<TFigure>();
+            var figuresWithoutTriangles = new TFigure[0];
             foreach (var figure in Figures)
             {
                 if (!(figure is Triangle))
                 {
-                    figuresWithoutTriangles.Add(figure);
+                    figuresWithoutTriangles = figuresWithoutTriangles.Append(figure).ToArray();
                 }
             }
 
@@ -202,12 +201,12 @@ namespace Laba_one
         }
         private void DrawRhomb(int count)
         {
-            var figuresWithoutRhombes = new List<TFigure>();
+            var figuresWithoutRhombes = new TFigure[0];
             foreach (var figure in Figures)
             {
                 if (!(figure is Rhomb))
                 {
-                    figuresWithoutRhombes.Add(figure);
+                    figuresWithoutRhombes = figuresWithoutRhombes.Append(figure).ToArray();
                 }
             }
 
@@ -360,6 +359,46 @@ namespace Laba_one
             var selectedShape = GetSelectedShape();
             ChangeSize(selectedShape, Resizing.Minus);
         }
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            foreach (var figure in Figures)
+            {
+                if (figure is Circle)
+                {
+                    var circle = (Circle)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Ellipse)
+                {
+                    var circle = (Ellipse)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Square)
+                {
+                    var circle = (Square)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Triangle)
+                {
+                    var circle = (Triangle)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Rhomb)
+                {
+                    var circle = (Rhomb)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+            }
+        }
+        private void btnHide_Click_1(object sender, EventArgs e)
+        {
+            PictureBox.Image = null;
+        }
         #endregion
 
         #region Move
@@ -508,73 +547,5 @@ namespace Laba_one
         }
         #endregion
 
-        /*private void btnHide_Click(object sender, EventArgs e)
-        {
-            foreach (var figure in Figures)
-            {
-                if (figure is Circle)
-                {
-                    PictureBox.Image = null;
-                }
-                else if (figure is Ellipse)
-                {
-                    PictureBox.Image = null;
-                }
-                else if (figure is Square)
-                {
-                    PictureBox.Image = null;
-                }
-                else if (figure is Triangle)
-                {
-                    PictureBox.Image = null;
-                }
-                else if (figure is Rhomb)
-                {
-                    PictureBox.Image = null;
-                }
-            }
-        }*/
-
-        private void btnShow_Click(object sender, EventArgs e)
-        {
-            foreach (var figure in Figures)
-            {
-                if (figure is Circle)
-                {
-                    var circle = (Circle)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Ellipse)
-                {
-                    var circle = (Ellipse)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Square)
-                {
-                    var circle = (Square)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Triangle)
-                {
-                    var circle = (Triangle)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Rhomb)
-                {
-                    var circle = (Rhomb)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-            }
-        }
-
-        private void btnHide_Click_1(object sender, EventArgs e)
-        {
-            PictureBox.Image = null;
-        }
     }
 }
