@@ -14,7 +14,7 @@ namespace Laba_one
         Pen Pen;
         Random Random;
 
-        ContainerArr FigureArr; // храним все фигуры тут
+        ContainerArr FigureArr; // храним все фигуры тут, используем контейнер ContainerArr
 
         public FigureApp()
         {

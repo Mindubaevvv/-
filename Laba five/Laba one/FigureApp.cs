@@ -476,8 +476,19 @@ namespace Laba_one
             foreach (Circle circle in circles)
             {
                 circle.Resize(resizing);
-                circle.Draw(Graphics);
-                PictureBox.Image = Bitmap;
+               
+            }
+            if (ShowAllFiguresFlag)
+            {
+                ShowAllFigures();
+            }
+            else
+            {
+                foreach (Circle circle in circles)
+                {                   
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
             }
         }
 
