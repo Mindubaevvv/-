@@ -14,6 +14,7 @@ namespace Laba_one
         Pen Pen;
         Random Random;
         TFigure[] Figures;
+        bool ShowAllFiguresFlag;
 
         public FigureApp()
         {
@@ -22,8 +23,10 @@ namespace Laba_one
             Graphics = Graphics.FromImage(Bitmap);
             Pen = new Pen(Color.Black, 5);
             Random = new Random();
+            ShowAllFiguresFlag = false;
 
-            Figures = new TFigure[0];
+            var circle = new Circle(Pen, 25, 65, 15, PictureBox.Height, PictureBox.Width);
+            Figures = new TFigure[1] {circle};
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -361,39 +364,7 @@ namespace Laba_one
         }
         private void btnShow_Click(object sender, EventArgs e)
         {
-            foreach (var figure in Figures)
-            {
-                if (figure is Circle)
-                {
-                    var circle = (Circle)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Ellipse)
-                {
-                    var circle = (Ellipse)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Square)
-                {
-                    var circle = (Square)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Triangle)
-                {
-                    var circle = (Triangle)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Rhomb)
-                {
-                    var circle = (Rhomb)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-            }
+            ShowAllFigures();
         }
         private void btnHide_Click_1(object sender, EventArgs e)
         {
@@ -547,5 +518,55 @@ namespace Laba_one
         }
         #endregion
 
+        private void btnAllMassive_Click(object sender, EventArgs e)
+        {
+            if (ShowAllFiguresFlag ==  true)
+            {
+                ShowAllFiguresFlag = false;
+                PictureBox.Image = null; // скрываем фигуры
+            }
+            else  
+            {
+                ShowAllFiguresFlag = true;
+                ShowAllFigures();
+            }
+        }
+
+        private void ShowAllFigures()
+        {
+            foreach (var figure in Figures)
+            {
+                if (figure is Circle)
+                {
+                    var circle = (Circle)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Ellipse)
+                {
+                    var circle = (Ellipse)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Square)
+                {
+                    var circle = (Square)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Triangle)
+                {
+                    var circle = (Triangle)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+                else if (figure is Rhomb)
+                {
+                    var circle = (Rhomb)figure;
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+            }
+        }
     }
 }

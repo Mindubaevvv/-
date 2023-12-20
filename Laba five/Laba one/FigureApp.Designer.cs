@@ -254,12 +254,13 @@
             // 
             btnAllMassive.BackColor = System.Drawing.SystemColors.ActiveBorder;
             btnAllMassive.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnAllMassive.Location = new System.Drawing.Point(505, 537);
+            btnAllMassive.Location = new System.Drawing.Point(506, 552);
             btnAllMassive.Name = "btnAllMassive";
-            btnAllMassive.Size = new System.Drawing.Size(89, 58);
+            btnAllMassive.Size = new System.Drawing.Size(88, 43);
             btnAllMassive.TabIndex = 18;
             btnAllMassive.Text = "Массив";
             btnAllMassive.UseVisualStyleBackColor = false;
+            btnAllMassive.Click += btnAllMassive_Click;
             // 
             // FigureApp
             // 
