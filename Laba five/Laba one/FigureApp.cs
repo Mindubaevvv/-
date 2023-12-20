@@ -575,8 +575,8 @@ namespace Laba_one
             foreach (Circle circle in circles)
             {
                 circle.Resize(resizing);
-
             }
+
             if (ShowAllFiguresFlag)
             {
                 ShowAllFigures();
