@@ -46,6 +46,7 @@
             btnRhomb = new System.Windows.Forms.RadioButton();
             btnHide = new System.Windows.Forms.Button();
             btnShow = new System.Windows.Forms.Button();
+            btnAllMassive = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)PictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -249,11 +250,23 @@
             btnShow.UseVisualStyleBackColor = false;
             btnShow.Click += btnShow_Click;
             // 
+            // btnAllMassive
+            // 
+            btnAllMassive.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            btnAllMassive.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnAllMassive.Location = new System.Drawing.Point(505, 537);
+            btnAllMassive.Name = "btnAllMassive";
+            btnAllMassive.Size = new System.Drawing.Size(89, 58);
+            btnAllMassive.TabIndex = 18;
+            btnAllMassive.Text = "Массив";
+            btnAllMassive.UseVisualStyleBackColor = false;
+            // 
             // FigureApp
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1046, 702);
+            Controls.Add(btnAllMassive);
             Controls.Add(btnShow);
             Controls.Add(btnHide);
             Controls.Add(btnRhomb);
@@ -298,5 +311,6 @@
         private System.Windows.Forms.RadioButton btnRhomb;
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Button btnShow;
+        private System.Windows.Forms.Button btnAllMassive;
     }
 }
