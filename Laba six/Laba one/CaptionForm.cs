@@ -93,6 +93,7 @@ namespace Laba_one
         #region Draw
         private void DrawCircle(int count)
         {
+            // Буферный контейнер
             var figuresWithoutCircles = new ContainerList();
             var figures = FigureArr.Get();
 
