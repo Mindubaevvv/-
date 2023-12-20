@@ -23,10 +23,18 @@ namespace Laba_one
             Graphics = Graphics.FromImage(Bitmap);
             Pen = new Pen(Color.Black, 5);
             Random = new Random();
-            ShowAllFiguresFlag = false;
+            ShowAllFiguresFlag = true;
 
-            var circle = new Circle(Pen, 25, 65, 15, PictureBox.Height, PictureBox.Width);
-            Figures = new TFigure[1] {circle};
+            Figures = new TFigure[0];
+            DrawEllipse(3);
+            DrawSquare(5);
+            DrawTriangle(4);
+            DrawRhomb(6);
+
+            CreateCircles(3);
+            DrawCircle();
+
+            // Create ...
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -34,7 +42,8 @@ namespace Laba_one
             switch (selectedShape)
             {
                 case ShapeTypes.Circle:
-                    DrawCircle(count);
+                    CreateCircles(count);
+                    DrawCircle();
                     break;
                 case ShapeTypes.Ellipse:
                     DrawEllipse(count);
@@ -94,8 +103,23 @@ namespace Laba_one
             else return ShapeTypes.Triangle;
         }
         #region Draw
-        private void DrawCircle(int count)
+        private void DrawCircle()
         {
+            // получаем круги из Figures и отрисовываем           
+            foreach (var figure in Figures)
+            {
+                if (figure is Circle)
+                {
+                    ((Circle)figure).Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
+            }
+        }
+
+        // Создание кругов (наполнение Figures новыми кругами)
+        private void CreateCircles(int count)
+        {
+            // удаляем старые круги
             var figuresWithoutCircles = new TFigure[0];
             foreach (var figure in Figures)
             {
@@ -104,9 +128,10 @@ namespace Laba_one
                     figuresWithoutCircles = figuresWithoutCircles.Append(figure).ToArray();
                 }
             }
-
             Figures = figuresWithoutCircles.ToArray();
 
+
+            //создаем новые и наполняем Figures
             for (int i = 0; i < count; i++)
             {
                 var circleSize = Random.Next(100, 250);
@@ -114,12 +139,9 @@ namespace Laba_one
                 var positionX = Random.Next(0, PictureBox.Size.Width - circleSize);
 
                 var circle = new Circle(Pen, positionX, positionY, circleSize, PictureBox.Size.Height, PictureBox.Size.Width);
-                circle.Draw(Graphics);
-                PictureBox.Image = Bitmap;
 
                 Figures = Figures.Append(circle).ToArray();
             }
-
         }
 
         private void DrawEllipse(int count)
@@ -148,6 +170,7 @@ namespace Laba_one
                 Figures = Figures.Append(ellipse).ToArray();
             }
         }
+       
 
         private void DrawSquare(int count)
         {
@@ -242,11 +265,25 @@ namespace Laba_one
                 }
             }
 
+
             foreach (Circle circle in circles)
             {
                 circle.Move(direction);
-                circle.Draw(Graphics);
-                PictureBox.Image = Bitmap;
+            }
+
+            // Если кнопка "Массив" нажата, отрисовываем все фигуры
+            if (ShowAllFiguresFlag)
+            {
+                ShowAllFigures();
+            }
+            else // иначе рисуем только круги
+            {
+                foreach (Circle circle in circles)
+                {
+
+                    circle.Draw(Graphics);
+                    PictureBox.Image = Bitmap;
+                }
             }
         }
         private void MoveAndDrawEllipse(Direction direction)
@@ -520,12 +557,12 @@ namespace Laba_one
 
         private void btnAllMassive_Click(object sender, EventArgs e)
         {
-            if (ShowAllFiguresFlag ==  true)
+            if (ShowAllFiguresFlag == true)
             {
                 ShowAllFiguresFlag = false;
                 PictureBox.Image = null; // скрываем фигуры
             }
-            else  
+            else
             {
                 ShowAllFiguresFlag = true;
                 ShowAllFigures();
