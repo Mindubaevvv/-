@@ -21,8 +21,8 @@ namespace Laba_one.Shapes
         }
 
         public virtual void Resize() { }
-        public virtual void Draw() { }
-        public void Move(Direction direction)
+        public virtual void Draw(Graphics graphics) { }
+        public void Move(Direction direction, Graphics graphics)
         {
             switch (direction)
             {
@@ -42,7 +42,7 @@ namespace Laba_one.Shapes
                     Y += 20;
                     break;
             }
-            Draw();
+            Draw(graphics);
         }
 
     }

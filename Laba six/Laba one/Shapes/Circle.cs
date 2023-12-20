@@ -28,7 +28,7 @@ namespace Laba_one.Shapes
             }
         }
 
-        public void Draw(Graphics graphics)
+        public override void Draw(Graphics graphics)
         {
             graphics.DrawEllipse(new Pen(Color.DarkGreen, 5), X, Y, Size, Size);
         }

@@ -315,7 +315,7 @@ namespace Laba_one
 
             foreach (Circle circle in circles.Get())
             {
-                circle.Move(direction);
+                circle.Move(direction, Graphics);
                 
             }
 
@@ -347,7 +347,7 @@ namespace Laba_one
 
             foreach (Ellipse ellipse in ellipses.Get())
             {
-                ellipse.Move(direction);
+                ellipse.Move(direction, Graphics);
             }
 
             if (ShowAllFiguresFlag)
@@ -376,7 +376,7 @@ namespace Laba_one
 
             foreach (Square square in squares.Get())
             {
-                square.Move(direction);
+                square.Move(direction, Graphics);
             }
 
             if (ShowAllFiguresFlag)
@@ -405,7 +405,7 @@ namespace Laba_one
 
             foreach (Triangle triangle in triangles.Get())
             {
-                triangle.Move(direction);
+                triangle.Move(direction, Graphics);
             }
 
             if (ShowAllFiguresFlag)
@@ -435,7 +435,7 @@ namespace Laba_one
 
             foreach (Rhomb rhomb in rhombesContainer.Get())
             {
-                rhomb.Move(direction);
+                rhomb.Move(direction, Graphics);
             }
 
             if (ShowAllFiguresFlag)
