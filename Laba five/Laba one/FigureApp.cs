@@ -445,7 +445,7 @@ namespace Laba_one
             switch (selectedShape)
             {
                 case ShapeTypes.Circle:
-                    ChangeandDrawCircleSize(resizing);
+                    ChangeAndDrawCircleSize(resizing);
                     break;
                 case ShapeTypes.Square:
                     ChangeandDrawSquareSize(resizing);
@@ -462,7 +462,7 @@ namespace Laba_one
             }
         }
 
-        private void ChangeandDrawCircleSize(Resizing resizing)
+        private void ChangeAndDrawCircleSize(Resizing resizing)
         {
             var circles = new TFigure[0];
             foreach (var figure in Figures)
