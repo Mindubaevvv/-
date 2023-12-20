@@ -25,7 +25,7 @@ namespace Laba_one.Shapes
                 Size -= 10;
             }
         }
-        public void Draw(Graphics graphics)
+        public override void Draw(Graphics graphics)
         {
             graphics.DrawRectangle(new Pen(Color.DarkRed, 5), X, Y, Size, Size);
         }

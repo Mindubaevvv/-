@@ -14,7 +14,7 @@ namespace Laba_one.Shapes
             X = x;
             Y = y;
         }
-        public new void Draw(Graphics graphics)
+        public override void Draw(Graphics graphics)
         {
             Point point1 = new Point(X + Size / 2, Y);
             Point point2 = new Point(X + Size, Y + Size / 2);
