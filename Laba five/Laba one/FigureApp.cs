@@ -170,7 +170,7 @@ namespace Laba_one
                 Figures = Figures.Append(ellipse).ToArray();
             }
         }
-       
+
 
         private void DrawSquare(int count)
         {
@@ -268,7 +268,7 @@ namespace Laba_one
 
             foreach (Circle circle in circles)
             {
-                circle.Move(direction);
+                circle.Move(direction, Graphics);
             }
 
             // Если кнопка "Массив" нажата, отрисовываем все фигуры
@@ -299,7 +299,7 @@ namespace Laba_one
 
             foreach (Ellipse ellipse in ellipses)
             {
-                ellipse.Move(direction);
+                ellipse.Move(direction, Graphics);
                 ellipse.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
@@ -317,7 +317,7 @@ namespace Laba_one
 
             foreach (Square square in squares)
             {
-                square.Move(direction);
+                square.Move(direction, Graphics);
                 square.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
@@ -335,7 +335,7 @@ namespace Laba_one
 
             foreach (Triangle triangle in triangles)
             {
-                triangle.Move(direction);
+                triangle.Move(direction, Graphics);
                 triangle.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
@@ -354,7 +354,7 @@ namespace Laba_one
 
             foreach (Rhomb rhomb in rhombes)
             {
-                rhomb.Move(direction);
+                rhomb.Move(direction, Graphics);
                 rhomb.Draw(Graphics);
                 PictureBox.Image = Bitmap;
             }
@@ -476,7 +476,7 @@ namespace Laba_one
             foreach (Circle circle in circles)
             {
                 circle.Resize(resizing);
-               
+
             }
             if (ShowAllFiguresFlag)
             {
@@ -485,7 +485,7 @@ namespace Laba_one
             else
             {
                 foreach (Circle circle in circles)
-                {                   
+                {
                     circle.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
