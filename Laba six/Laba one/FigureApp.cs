@@ -25,15 +25,20 @@ namespace Laba_one
             Pen = new Pen(Color.Black, 5);
             Random = new Random();
 
-            ShowAllFiguresFlag = false;
+            ShowAllFiguresFlag = true;
             FigureArr = new ContainerArr();
 
-            CreateCircles(3);  
-            CreateEllipses(3);   
+            CreateCircles(3);
+            DrawCircle();
+            CreateEllipses(3);
+            DrawEllipse();
             CreateSquares(5);
+            DrawSquare();
             CreateTriangles(4);
+            DrawTriangle();
             CreateRhombes(6);
-           
+            DrawRhomb();
+
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -121,7 +126,8 @@ namespace Laba_one
         private void CreateCircles(int count)
         {
             // удаляем старые круги
-            var figuresWithoutCircles = new ContainerList();  // Буферный контейнер - ContainerList
+            // Буферный контейнер - ContainerList
+            var figuresWithoutCircles = new ContainerList();  
             foreach (var figure in FigureArr.Get())
             {
                 if (!(figure is Circle))
@@ -274,11 +280,11 @@ namespace Laba_one
             {
                 if (!(figure is Rhomb))
                 {
-                    figuresWithoutRhombes.Get().Append(figure).ToArray();
+                    figuresWithoutRhombes.Add(figure);
                 }
             }
 
-            FigureArr.Get().ToArray();
+            FigureArr.Set(figuresWithoutRhombes.Get().ToArray());
 
             for (int i = 0; i < count; i++)
             {
@@ -290,7 +296,7 @@ namespace Laba_one
                 //rhombes.Draw(Graphics);
                 //PictureBox.Image = Bitmap;
 
-                FigureArr.Get().Append(rhombes).ToArray();
+                FigureArr.Add(rhombes);
             }
         }
         #endregion
@@ -313,7 +319,7 @@ namespace Laba_one
                 
             }
 
-            // Если кнопка "Массив" нажата, отрисовываем все фигуры
+            // Если кнопка "Массив" нажат, отрисовываем все фигуры
             if (ShowAllFiguresFlag)
             {
                 ShowAllFigures();
@@ -418,16 +424,16 @@ namespace Laba_one
 
         private void MoveAndDrawRhomb(Direction direction)
         {
-            var rhombesContainer = new ContainerList();
+            var rhombes = new ContainerList();
             foreach (var figure in FigureArr.Get())
             {
                 if (figure is Rhomb)
                 {
-                    rhombesContainer.Add((Rhomb)figure);
+                    rhombes.Add((Rhomb)figure);
                 }
             }
 
-            foreach (Rhomb rhomb in rhombesContainer.Get())
+            foreach (Rhomb rhomb in rhombes.Get())
             {
                 rhomb.Move(direction);
             }
@@ -438,7 +444,7 @@ namespace Laba_one
             }
             else
             {
-                foreach (Rhomb rhomb in rhombesContainer.Get())
+                foreach (Rhomb rhomb in rhombes.Get())
                 {
                     rhomb.Draw(Graphics);
                     PictureBox.Image = Bitmap;
@@ -742,26 +748,26 @@ namespace Laba_one
                 }
                 else if (figure is Ellipse)
                 {
-                    var circle = (Ellipse)figure;
-                    circle.Draw(Graphics);
+                    var ellipse = (Ellipse)figure;
+                    ellipse.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
                 else if (figure is Square)
                 {
-                    var circle = (Square)figure;
-                    circle.Draw(Graphics);
+                    var square = (Square)figure;
+                    square.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
                 else if (figure is Triangle)
                 {
-                    var circle = (Triangle)figure;
-                    circle.Draw(Graphics);
+                    var triangle = (Triangle)figure;
+                    triangle.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
                 else if (figure is Rhomb)
                 {
-                    var circle = (Rhomb)figure;
-                    circle.Draw(Graphics);
+                    var rhomb = (Rhomb)figure;
+                    rhomb.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }

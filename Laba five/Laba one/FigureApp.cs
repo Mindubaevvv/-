@@ -30,7 +30,7 @@ namespace Laba_one
             CreateCircles(3);
             DrawCircle();
 
-            CreateEllipses(3);
+            CreateEllipses(4);
             DrawEllipse();
 
             CreateSquares(5);
