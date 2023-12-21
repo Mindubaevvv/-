@@ -24,22 +24,16 @@ namespace Laba_one
             Graphics = Graphics.FromImage(Bitmap);
             Pen = new Pen(Color.Black, 5);
             Random = new Random();
+
+            ShowAllFiguresFlag = false;
             FigureArr = new ContainerArr();
 
-            CreateCircles(3);
-            DrawCircle();
-
-            CreateEllipses(3);
-            DrawEllipse();
-
+            CreateCircles(3);  
+            CreateEllipses(3);   
             CreateSquares(5);
-            DrawSquare();
-
             CreateTriangles(4);
-            DrawTriangle();
-
             CreateRhombes(6);
-            DrawRhomb();
+           
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -132,10 +126,10 @@ namespace Laba_one
             {
                 if (!(figure is Circle))
                 {
-                    figuresWithoutCircles.Get().Append(figure).ToArray();
+                    figuresWithoutCircles.Add(figure);
                 }
             }
-            FigureArr.Get().ToArray();
+            FigureArr.Set(figuresWithoutCircles.Get().ToArray());
 
 
             //создаем новые и наполняем Figures
@@ -147,7 +141,7 @@ namespace Laba_one
 
                 var circle = new Circle(Pen, positionX, positionY, circleSize, PictureBox.Size.Height, PictureBox.Size.Width);
 
-                FigureArr.Get().Append(circle).ToArray();
+                FigureArr.Add(circle);
             }
         }
 
@@ -170,11 +164,11 @@ namespace Laba_one
             {
                 if (!(figure is Ellipse))
                 {
-                    figuresWithoutEllipses.Get().Append(figure).ToArray();
+                    figuresWithoutEllipses.Add(figure);
                 }
             }
 
-            FigureArr.Get().ToArray();
+            FigureArr.Set(figuresWithoutEllipses.Get().ToArray());
 
             for (int i = 0; i < count; i++)
             {
@@ -184,7 +178,7 @@ namespace Laba_one
 
                 var ellipse = new Ellipse(Pen, positionX, positionY, ellipseSize / 2);
 
-                FigureArr.Get().Append(ellipse).ToArray();
+                FigureArr.Add(ellipse);
             }
         }
 
@@ -206,11 +200,11 @@ namespace Laba_one
             {
                 if (!(figure is Square))
                 {
-                    figuresWithoutSquares.Get().Append(figure).ToArray();
+                    figuresWithoutSquares.Add(figure);
                 }
             }
 
-            FigureArr.Get().ToArray();
+            FigureArr.Set(figuresWithoutSquares.Get().ToArray());
 
             for (int i = 0; i < count; i++)
             {
@@ -219,10 +213,10 @@ namespace Laba_one
                 var positionX = Random.Next(0, PictureBox.Size.Width - squareSize);
 
                 var squares = new Square(Pen, positionX, positionY, squareSize);
-                squares.Draw(Graphics);
-                PictureBox.Image = Bitmap;
+                //squares.Draw(Graphics);
+                //PictureBox.Image = Bitmap;
 
-                FigureArr.Get().Append(squares).ToArray();
+                FigureArr.Add(squares);
             }
         }
         private void DrawTriangle()
@@ -243,11 +237,11 @@ namespace Laba_one
             {
                 if (!(figure is Triangle))
                 {
-                    figuresWithoutTriangles.Get().Append(figure).ToArray();
+                    figuresWithoutTriangles.Add(figure);
                 }
             }
 
-            FigureArr.Get().ToArray(); ;
+            FigureArr.Set(figuresWithoutTriangles.Get().ToArray());
 
             for (int i = 0; i < count; i++)
             {
@@ -255,11 +249,11 @@ namespace Laba_one
                 var x = Random.Next(0, PictureBox.Width - triangleSize);
                 var y = Random.Next(0, PictureBox.Height - triangleSize);
 
-                var triangles = new Triangle(Pen, x, y, triangleSize);
-                triangles.Draw(Graphics);
-                PictureBox.Image = Bitmap;
+                var triangle = new Triangle(Pen, x, y, triangleSize);
+                //triangles.Draw(Graphics);
+                //PictureBox.Image = Bitmap;
 
-                FigureArr.Get().Append(triangles).ToArray();
+                FigureArr.Add(triangle);
             }
         }
         private void DrawRhomb()
@@ -293,8 +287,8 @@ namespace Laba_one
                 var y = Random.Next(0, PictureBox.Height - rhombSize);
 
                 var rhombes = new Rhomb(Pen, x, y, rhombSize);
-                rhombes.Draw(Graphics);
-                PictureBox.Image = Bitmap;
+                //rhombes.Draw(Graphics);
+                //PictureBox.Image = Bitmap;
 
                 FigureArr.Get().Append(rhombes).ToArray();
             }
@@ -315,7 +309,7 @@ namespace Laba_one
 
             foreach (Circle circle in circles.Get())
             {
-                circle.Move(direction, Graphics);
+                circle.Move(direction);
                 
             }
 
@@ -347,7 +341,7 @@ namespace Laba_one
 
             foreach (Ellipse ellipse in ellipses.Get())
             {
-                ellipse.Move(direction, Graphics);
+                ellipse.Move(direction);
             }
 
             if (ShowAllFiguresFlag)
@@ -376,7 +370,7 @@ namespace Laba_one
 
             foreach (Square square in squares.Get())
             {
-                square.Move(direction, Graphics);
+                square.Move(direction);
             }
 
             if (ShowAllFiguresFlag)
@@ -405,7 +399,7 @@ namespace Laba_one
 
             foreach (Triangle triangle in triangles.Get())
             {
-                triangle.Move(direction, Graphics);
+                triangle.Move(direction);
             }
 
             if (ShowAllFiguresFlag)
@@ -435,7 +429,7 @@ namespace Laba_one
 
             foreach (Rhomb rhomb in rhombesContainer.Get())
             {
-                rhomb.Move(direction, Graphics);
+                rhomb.Move(direction);
             }
 
             if (ShowAllFiguresFlag)
