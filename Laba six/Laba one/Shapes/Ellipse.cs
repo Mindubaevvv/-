@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Laba_one.Shapes
 {
-    class Ellipse : Circle
+    public class Ellipse : Circle
     {
         public Ellipse(Pen pen, int x, int y, int size) : base(pen, x, y, size, 0, 0)
         {
@@ -14,7 +14,7 @@ namespace Laba_one.Shapes
             X = x;
             Y = y;
         }
-        public new void Draw(Graphics graphics)
+        public override void Draw(Graphics graphics)
         {
             graphics.DrawEllipse(new Pen(Color.DarkBlue, 5), X, Y, Size, Size / 2);
         }

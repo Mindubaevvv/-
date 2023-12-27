@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Laba_one.Shapes
 {
-    class Triangle : TFigure
+    public class Triangle : TFigure
     {
         public Triangle(Pen pen, int x, int y, int size) : base(pen, x, y, size)
         {
@@ -16,7 +16,7 @@ namespace Laba_one.Shapes
             X = x;
             Y = y;
         }
-        public void Resize(Resizing resizing)
+        public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
             {
@@ -28,7 +28,7 @@ namespace Laba_one.Shapes
             }
         }
 
-        public new void Draw(Graphics graphics)
+        public override void Draw(Graphics graphics)
         {
             Point point1 = new Point(X, Y + Size);
             Point point2 = new Point(X + Size / 2, Y);

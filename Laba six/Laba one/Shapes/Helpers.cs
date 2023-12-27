@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Laba_one.Shapes
 {
-    enum ShapeTypes
+    public enum ShapeTypes
     {
         Circle,
         Ellipse,
@@ -12,7 +12,7 @@ namespace Laba_one.Shapes
         Triangle,
         Rhomb
     }
-    enum Direction
+    public enum Direction
     {
         Up,
         Down,
@@ -20,7 +20,7 @@ namespace Laba_one.Shapes
         Right
     }
 
-    enum Resizing
+    public enum Resizing
     {
         Plus,
         Minus

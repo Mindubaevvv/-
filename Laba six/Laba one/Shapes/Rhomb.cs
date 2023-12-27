@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Laba_one.Shapes
 {
-    class Rhomb : Square
+    public class Rhomb : Square
     {
         public Rhomb(Pen pen, int x, int y, int size) : base(pen, x, y, size)
         {
@@ -14,7 +14,7 @@ namespace Laba_one.Shapes
             X = x;
             Y = y;
         }
-        public new void Draw(Graphics graphics)
+        public override void Draw(Graphics graphics)
         {
             Point point1 = new Point(X + Size / 2, Y);
             Point point2 = new Point(X + Size, Y + Size / 2);

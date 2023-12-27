@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Laba_one.Shapes
 {
-    abstract class TFigure
+    public abstract class TFigure
     {
         protected int X;
         protected int Y;
@@ -20,9 +17,9 @@ namespace Laba_one.Shapes
             Size = size;
         }
 
-        public virtual void Resize() { }
-        public virtual void Draw() { }
-        public void Move(Direction direction)
+        public abstract void Resize(Resizing resizing);
+        public abstract void Draw(Graphics graphics);
+        public void Move(Direction direction, Graphics graphics)
         {
             switch (direction)
             {
@@ -42,7 +39,7 @@ namespace Laba_one.Shapes
                     Y += 20;
                     break;
             }
-            Draw();
+            Draw(graphics);
         }
 
     }

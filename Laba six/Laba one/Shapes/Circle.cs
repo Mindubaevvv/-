@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Laba_one.Shapes
 {
-    class Circle : TFigure
+    public class Circle : TFigure
     {
         public Circle(Pen pen, int x, int y, int size, int pictureBoxHeight, int pictureBoxWidth) : base(pen,x,y,size)
         {           
@@ -16,7 +16,7 @@ namespace Laba_one.Shapes
             X = x;
             Y = y;
         }
-        public void Resize(Resizing resizing)
+        public override void Resize(Resizing resizing)
         {
             if (resizing == Resizing.Plus)
             {
@@ -28,7 +28,7 @@ namespace Laba_one.Shapes
             }
         }
 
-        public new void Draw(Graphics graphics)
+        public override void Draw(Graphics graphics)
         {
             graphics.DrawEllipse(new Pen(Color.DarkGreen, 5), X, Y, Size, Size);
         }
