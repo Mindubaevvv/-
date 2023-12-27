@@ -697,39 +697,7 @@ namespace Laba_one
         private void btnShow_Click(object sender, EventArgs e)
         {
             var figures = FigureArr.Get();
-            foreach (var figure in figures)
-            {
-                if (figure is Circle)
-                {
-                    var circle = (Circle)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Ellipse)
-                {
-                    var circle = (Ellipse)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Square)
-                {
-                    var circle = (Square)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Triangle)
-                {
-                    var circle = (Triangle)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Rhomb)
-                {
-                    var circle = (Rhomb)figure;
-                    circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-            }
+            ShowAllFigures();
         }
         private void btnHide_Click_1(object sender, EventArgs e)
         {
