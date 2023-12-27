@@ -5,13 +5,12 @@ namespace Laba_one.Shapes
     /// <summary>
     /// Контейнер для хранения граф. примитивов
     /// </summary>
-    public abstract class Container
+    public class Container
     {
-        public abstract TFigure[] Get();
-      
-        public abstract void Add(TFigure figures);
+        public virtual TFigure[] Get() { return null; }
 
-        public abstract void Set(TFigure[] figures);
-        
+        public virtual void Add(TFigure figures) { }
+
+        public virtual void Set(TFigure[] figures) { }
     }
 }

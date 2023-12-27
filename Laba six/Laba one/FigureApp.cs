@@ -24,8 +24,9 @@ namespace Laba_one
             Random = new Random();
             ShowAllFiguresFlag = true;
 
-            //Figures = new ContainerArr();
-            Figures = new ContainerList();
+            // тут меняем реализацию!
+            Figures = new ContainerArr();
+            //Figures = new ContainerList();
 
             CreateCircles(3);
             DrawCircle();
@@ -37,7 +38,20 @@ namespace Laba_one
             DrawTriangle();
             CreateRhombes(6);
             DrawRhomb();
+            
+            void SwitchContainerRealization()
+            {
+                if ()
+                {
+                    Figures = new ContainerArr();
+                }
+                else
+                {
+                    Figures = new ContainerList();
+                }
 
+
+            }
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
