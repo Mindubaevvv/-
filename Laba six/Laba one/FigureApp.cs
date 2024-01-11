@@ -39,7 +39,7 @@ namespace Laba_one
             CreateRhombes(6);
             DrawRhomb();
             
-            void SwitchContainerRealization()
+            /*void SwitchContainerRealization()
             {
                 if ()
                 {
@@ -51,7 +51,7 @@ namespace Laba_one
                 }
 
 
-            }
+            }*/
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
