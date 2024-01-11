@@ -16,7 +16,7 @@ namespace Laba_one.Shapes
             X = x;
             Y = y;
         }
-        public override void Resize(Resizing resizing)
+        public override void Resize(Resizing resizing, Graphics graphics)
         {
             if (resizing == Resizing.Plus)
             {
@@ -26,9 +26,10 @@ namespace Laba_one.Shapes
             {
                 Size -= 10;
             }
+            Draw(graphics);
         }
 
-        public override void Draw(Graphics graphics)
+        protected override void Draw(Graphics graphics)
         {
             graphics.DrawEllipse(new Pen(Color.DarkGreen, 5), X, Y, Size, Size);
         }

@@ -17,8 +17,8 @@ namespace Laba_one.Shapes
             Size = size;
         }
 
-        public abstract void Resize(Resizing resizing);
-        public abstract void Draw(Graphics graphics);
+        public abstract void Resize(Resizing resizing, Graphics graphics);
+        protected abstract void Draw(Graphics graphics);
         public void Move(Direction direction, Graphics graphics)
         {
             switch (direction)

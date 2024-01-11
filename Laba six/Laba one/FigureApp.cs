@@ -38,7 +38,7 @@ namespace Laba_one
             DrawTriangle();
             CreateRhombes(6);
             DrawRhomb();
-            
+
             /*void SwitchContainerRealization()
             {
                 if ()
@@ -140,7 +140,7 @@ namespace Laba_one
         {
             // удаляем старые круги
             // Буферный контейнер - ContainerList
-            var figuresWithoutCircles = new ContainerList();  
+            var figuresWithoutCircles = new ContainerList();
             foreach (var figure in Figures.Get())
             {
                 if (!(figure is Circle))
@@ -329,7 +329,7 @@ namespace Laba_one
             foreach (Circle circle in circles.Get())
             {
                 circle.Move(direction, Graphics);
-                
+
             }
 
             // Если кнопка "Массив" нажат, отрисовываем все фигуры
@@ -494,15 +494,16 @@ namespace Laba_one
         private void btnPlus_Click(object sender, EventArgs e)
         {
             ClearPictureBox();
-            var selectedShape = GetSelectedShape();
-            ChangeSize(selectedShape, Resizing.Plus);
+            Figures.Resize(Resizing.Plus, Graphics);
+            PictureBox.Image = Bitmap;
+
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
             ClearPictureBox();
-            var selectedShape = GetSelectedShape();
-            ChangeSize(selectedShape, Resizing.Minus);
+            Figures.Resize(Resizing.Minus, Graphics);
+            PictureBox.Image = Bitmap;
         }
         #endregion
 
@@ -510,8 +511,8 @@ namespace Laba_one
         private void btnUp_Click(object sender, EventArgs e)
         {
             ClearPictureBox();
-            var selectedShape = GetSelectedShape();
-            DrawWithNewPosition(selectedShape, Direction.Up);
+            Figures.Move(Direction.Up, Graphics);
+            PictureBox.Image = Bitmap;
         }
 
         private void btnRight_Click(object sender, EventArgs e)
@@ -537,27 +538,6 @@ namespace Laba_one
         #endregion
 
         #region Change
-        private void ChangeSize(ShapeTypes selectedShape, Resizing resizing)
-        {
-            switch (selectedShape)
-            {
-                case ShapeTypes.Circle:
-                    ChangeandDrawCircleSize(resizing);
-                    break;
-                case ShapeTypes.Square:
-                    ChangeandDrawSquareSize(resizing);
-                    break;
-                case ShapeTypes.Triangle:
-                    ChangeandDrawTriangleSize(resizing);
-                    break;
-                case ShapeTypes.Rhomb:
-                    ChangeandDrawRhombSize(resizing);
-                    break;
-                default:
-                    ChangeandDrawEllipseSize(resizing);
-                    break;
-            }
-        }
 
         private void ChangeandDrawCircleSize(Resizing resizing)
         {
