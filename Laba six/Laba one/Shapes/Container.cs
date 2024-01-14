@@ -16,6 +16,6 @@ namespace Laba_one.Shapes
         public virtual void Set(TFigure[] figures) { }
         public virtual void Move(Direction direction, Graphics graphics) { }
         public virtual void Resize(Resizing resizing, Graphics graphics) { }
-        public virtual void Draw(Graphics graphics) { }
+        public virtual void Draw(Graphics graphics, ShapeTypes selectedShape) { }
     }
 }

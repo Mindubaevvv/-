@@ -132,7 +132,7 @@
             // 
             btnPlus.BackColor = System.Drawing.SystemColors.ActiveBorder;
             btnPlus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnPlus.Location = new System.Drawing.Point(760, 567);
+            btnPlus.Location = new System.Drawing.Point(744, 567);
             btnPlus.Name = "btnPlus";
             btnPlus.Size = new System.Drawing.Size(94, 33);
             btnPlus.TabIndex = 13;
@@ -144,7 +144,7 @@
             // 
             btnMinus.BackColor = System.Drawing.SystemColors.ActiveCaption;
             btnMinus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnMinus.Location = new System.Drawing.Point(760, 642);
+            btnMinus.Location = new System.Drawing.Point(744, 642);
             btnMinus.Name = "btnMinus";
             btnMinus.Size = new System.Drawing.Size(94, 33);
             btnMinus.TabIndex = 14;
@@ -180,7 +180,7 @@
             // 
             btnAllMassive.BackColor = System.Drawing.SystemColors.ActiveBorder;
             btnAllMassive.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnAllMassive.Location = new System.Drawing.Point(512, 567);
+            btnAllMassive.Location = new System.Drawing.Point(526, 567);
             btnAllMassive.Name = "btnAllMassive";
             btnAllMassive.Size = new System.Drawing.Size(117, 38);
             btnAllMassive.TabIndex = 18;
@@ -192,12 +192,13 @@
             // 
             button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             button1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            button1.Location = new System.Drawing.Point(512, 642);
+            button1.Location = new System.Drawing.Point(526, 642);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(117, 38);
             button1.TabIndex = 19;
-            button1.Text = "Контейнер";
+            button1.Text = "Лист";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // FigureApp
             // 

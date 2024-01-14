@@ -89,27 +89,6 @@ namespace Laba_one
 
         }
 
-        /*private ShapeTypes GetSelectedShape()
-        {
-            if (btnCircle.Checked)
-            {
-                return ShapeTypes.Circle;
-            }
-            else if (btnEllipse.Checked)
-            {
-                return ShapeTypes.Ellipse;
-            }
-            else if (btnSquare.Checked)
-            {
-                return ShapeTypes.Square;
-            }
-            else if (btnRhomb.Checked)
-            {
-                return ShapeTypes.Rhomb;
-            }
-            else return ShapeTypes.Triangle;
-        }*/
-
         #region Draw
         private void DrawCircle()
         {
@@ -483,7 +462,6 @@ namespace Laba_one
             ClearPictureBox();
             Figures.Resize(Resizing.Plus, Graphics);
             PictureBox.Image = Bitmap;
-
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
@@ -491,6 +469,42 @@ namespace Laba_one
             ClearPictureBox();
             Figures.Resize(Resizing.Minus, Graphics);
             PictureBox.Image = Bitmap;
+        }
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            var figures = Figures.Get();
+            ShowAllFigures();
+        }
+        private void btnHide_Click_1(object sender, EventArgs e)
+        {
+            PictureBox.Image = null;
+        }
+        private void btnAllMassive_Click(object sender, EventArgs e)
+        {
+            if (ShowAllFiguresFlag == true)
+            {
+                ShowAllFiguresFlag = false;
+                PictureBox.Image = null; // скрываем фигуры
+            }
+            else
+            {
+                ShowAllFiguresFlag = true;
+                ShowAllFigures();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (ShowAllFiguresFlag == true)
+            {
+                ShowAllFiguresFlag = false;
+                PictureBox.Image = null; // скрываем фигуры
+            }
+            else
+            {
+                ShowAllFiguresFlag = true;
+                ShowAllFigures();
+            }
         }
         #endregion
 
@@ -674,16 +688,6 @@ namespace Laba_one
         }
         #endregion
 
-        private void btnShow_Click(object sender, EventArgs e)
-        {
-            var figures = Figures.Get();
-            ShowAllFigures();
-        }
-        private void btnHide_Click_1(object sender, EventArgs e)
-        {
-            PictureBox.Image = null;
-        }
-
         private void ShowAllFigures()
         {
             foreach (var figure in Figures.Get())
@@ -721,18 +725,5 @@ namespace Laba_one
             }
         }
 
-        private void btnAllMassive_Click(object sender, EventArgs e)
-        {
-            if (ShowAllFiguresFlag == true)
-            {
-                ShowAllFiguresFlag = false;
-                PictureBox.Image = null; // скрываем фигуры
-            }
-            else
-            {
-                ShowAllFiguresFlag = true;
-                ShowAllFigures();
-            }
-        }
     }
 }
