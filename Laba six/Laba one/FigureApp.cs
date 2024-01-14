@@ -38,20 +38,6 @@ namespace Laba_one
             DrawTriangle();
             CreateRhombes(6);
             DrawRhomb();
-
-            /*void SwitchContainerRealization()
-            {
-                if ()
-                {
-                    Figures = new ContainerArr();
-                }
-                else
-                {
-                    Figures = new ContainerList();
-                }
-
-
-            }*/
         }
 
         private void DrawShapes(ShapeTypes selectedShape, int count)
@@ -103,7 +89,7 @@ namespace Laba_one
 
         }
 
-        private ShapeTypes GetSelectedShape()
+        /*private ShapeTypes GetSelectedShape()
         {
             if (btnCircle.Checked)
             {
@@ -122,7 +108,8 @@ namespace Laba_one
                 return ShapeTypes.Rhomb;
             }
             else return ShapeTypes.Triangle;
-        }
+        }*/
+
         #region Draw
         private void DrawCircle()
         {
@@ -131,7 +118,7 @@ namespace Laba_one
             {
                 if (figure is Circle)
                 {
-                    ((Circle)figure).Draw(Graphics);
+                    //((Circle)figure).Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -170,7 +157,7 @@ namespace Laba_one
             {
                 if (figure is Ellipse)
                 {
-                    ((Ellipse)figure).Draw(Graphics);
+                    //((Ellipse)figure).Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -207,7 +194,7 @@ namespace Laba_one
             {
                 if (figure is Square)
                 {
-                    ((Square)figure).Draw(Graphics);
+                    //((Square)figure).Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -244,7 +231,7 @@ namespace Laba_one
             {
                 if (figure is Triangle)
                 {
-                    ((Triangle)figure).Draw(Graphics);
+                    //((Triangle)figure).Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -281,7 +268,7 @@ namespace Laba_one
             {
                 if (figure is Rhomb)
                 {
-                    ((Rhomb)figure).Draw(Graphics);
+                    //((Rhomb)figure).Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -342,7 +329,7 @@ namespace Laba_one
                 foreach (Circle circle in circles.Get())
                 {
 
-                    circle.Draw(Graphics);
+                    //circle.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -371,7 +358,7 @@ namespace Laba_one
             {
                 foreach (Ellipse ellipse in ellipses.Get())
                 {
-                    ellipse.Draw(Graphics);
+                    //ellipse.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -400,7 +387,7 @@ namespace Laba_one
             {
                 foreach (Square square in squares.Get())
                 {
-                    square.Draw(Graphics);
+                    //square.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -429,7 +416,7 @@ namespace Laba_one
             {
                 foreach (Triangle triangle in triangles.Get())
                 {
-                    triangle.Draw(Graphics);
+                    //triangle.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -459,7 +446,7 @@ namespace Laba_one
             {
                 foreach (Rhomb rhomb in rhombes.Get())
                 {
-                    rhomb.Draw(Graphics);
+                    //rhomb.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -476,14 +463,14 @@ namespace Laba_one
         {
             ClearPictureBox();
 
-            var selectedShape = GetSelectedShape();
-            DrawShapes(selectedShape, 1);
+            //var selectedShape = GetSelectedShape();
+            //DrawShapes(selectedShape, 1);
         }
         private void btnChange_Click(object sender, EventArgs e)
         {
-            var selectedShape = GetSelectedShape();
+            //var selectedShape = GetSelectedShape();
             var count = Random.Next(1, 5);
-            DrawShapes(selectedShape, count);
+            //DrawShapes(selectedShape, count);
             ClearPictureBox();
         }
         private void btnDelete_Click(object sender, EventArgs e)
@@ -518,21 +505,21 @@ namespace Laba_one
         private void btnRight_Click(object sender, EventArgs e)
         {
             ClearPictureBox();
-            var selectedShape = GetSelectedShape();
-            DrawWithNewPosition(selectedShape, Direction.Right);
+            Figures.Move(Direction.Right, Graphics);
+            PictureBox.Image = Bitmap;
         }
         private void btnLeft_Click(object sender, EventArgs e)
         {
             ClearPictureBox();
-            var selectedShape = GetSelectedShape();
-            DrawWithNewPosition(selectedShape, Direction.Left);
+            Figures.Move(Direction.Left, Graphics);
+            PictureBox.Image = Bitmap;
         }
 
         private void btnDown_Click(object sender, EventArgs e)
         {
             ClearPictureBox();
-            var selectedShape = GetSelectedShape();
-            DrawWithNewPosition(selectedShape, Direction.Down);
+            Figures.Move(Direction.Down, Graphics);
+            PictureBox.Image = Bitmap;
 
         }
         #endregion
@@ -552,7 +539,7 @@ namespace Laba_one
 
             foreach (Circle circle in circles.Get())
             {
-                circle.Resize(resizing);
+                //circle.Resize(resizing);
             }
 
             if (ShowAllFiguresFlag)
@@ -563,7 +550,7 @@ namespace Laba_one
             {
                 foreach (Circle circle in circles.Get())
                 {
-                    circle.Draw(Graphics);
+                    //circle.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -582,7 +569,7 @@ namespace Laba_one
 
             foreach (Ellipse ellipse in ellipses.Get())
             {
-                ellipse.Resize(resizing);
+                //ellipse.Resize(resizing);
             }
 
             if (ShowAllFiguresFlag)
@@ -593,7 +580,7 @@ namespace Laba_one
             {
                 foreach (Ellipse ellipse in ellipses.Get())
                 {
-                    ellipse.Draw(Graphics);
+                    //ellipse.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -611,7 +598,7 @@ namespace Laba_one
 
             foreach (Square square in squares.Get())
             {
-                square.Resize(resizing);
+                //square.Resize(resizing);
             }
 
             if (ShowAllFiguresFlag)
@@ -622,7 +609,7 @@ namespace Laba_one
             {
                 foreach (Square square in squares.Get())
                 {
-                    square.Draw(Graphics);
+                    //square.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -640,7 +627,7 @@ namespace Laba_one
 
             foreach (Triangle triangle in triangles.Get())
             {
-                triangle.Resize(resizing);
+                //triangle.Resize(resizing);
             }
 
             if (ShowAllFiguresFlag)
@@ -651,7 +638,7 @@ namespace Laba_one
             {
                 foreach (Triangle triangle in triangles.Get())
                 {
-                    triangle.Draw(Graphics);
+                    //triangle.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -669,7 +656,7 @@ namespace Laba_one
 
             foreach (Rhomb rhomb in rhombes.Get())
             {
-                rhomb.Resize(resizing);
+                //rhomb.Resize(resizing);
             }
 
             if (ShowAllFiguresFlag)
@@ -680,7 +667,7 @@ namespace Laba_one
             {
                 foreach (Rhomb rhomb in rhombes.Get())
                 {
-                    rhomb.Draw(Graphics);
+                    //rhomb.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
@@ -704,31 +691,31 @@ namespace Laba_one
                 if (figure is Circle)
                 {
                     var circle = (Circle)figure;
-                    circle.Draw(Graphics);
+                    //circle.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
                 else if (figure is Ellipse)
                 {
                     var ellipse = (Ellipse)figure;
-                    ellipse.Draw(Graphics);
+                    //ellipse.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
                 else if (figure is Square)
                 {
                     var square = (Square)figure;
-                    square.Draw(Graphics);
+                    //square.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
                 else if (figure is Triangle)
                 {
                     var triangle = (Triangle)figure;
-                    triangle.Draw(Graphics);
+                    //triangle.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
                 else if (figure is Rhomb)
                 {
                     var rhomb = (Rhomb)figure;
-                    rhomb.Draw(Graphics);
+                    //rhomb.Draw(Graphics);
                     PictureBox.Image = Bitmap;
                 }
             }
