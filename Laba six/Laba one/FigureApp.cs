@@ -29,35 +29,28 @@ namespace Laba_one
             //Figures = new ContainerList();
             SetFigures();
 
+            // Для отображения нужно вызвать метод Draw. Мы этот метод скрыли (сделали метод protected) и теперь он нам не доступен
+            // Поэтому здесь вызываем Move например, т.к.внутри него вызывается метод Draw. Или вместо него можно вызвать resize.
+            Figures.Move(Direction.Right, Graphics);
+
         }
 
         private void SetFigures()
         {
             CreateCircles(3);
-            DrawCircle();
+
             CreateEllipses(3);
-            DrawEllipse();
+
             CreateSquares(5);
-            DrawSquare();
+
             CreateTriangles(4);
-            DrawTriangle();
+
             CreateRhombes(6);
-            DrawRhomb();
+
         }
 
         #region Draw
-        private void DrawCircle()
-        {
-            // получаем круги из Figures и отрисовываем           
-            foreach (var figure in Figures.Get())
-            {
-                if (figure is Circle)
-                {
-                    //((Circle)figure).Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-            }
-        }
+
         private void CreateCircles(int count)
         {
             // удаляем старые круги
@@ -428,7 +421,7 @@ namespace Laba_one
         }
         private void btnShow_Click(object sender, EventArgs e)
         {
-            var figures = Figures.Get();
+            
             ShowAllFigures();
         }
         private void btnHide_Click_1(object sender, EventArgs e)
@@ -437,8 +430,8 @@ namespace Laba_one
         }
         private void btnAllMassive_Click(object sender, EventArgs e)
         {
-            //Figures = new ContainerArr();            
-            //SetFigures();
+            Figures = new ContainerArr();            
+            SetFigures();
 
             if (ShowAllFiguresFlag == true)
             {
@@ -453,9 +446,9 @@ namespace Laba_one
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {         
-            //Figures = new ContainerList();
-            //SetFigures();
+        {
+            Figures = new ContainerList();
+            SetFigures();
 
             if (ShowAllFiguresFlag == true)
             {
@@ -652,39 +645,7 @@ namespace Laba_one
 
         private void ShowAllFigures()
         {
-            foreach (var figure in Figures.Get())
-            {
-                if (figure is Circle)
-                {
-                    var circle = (Circle)figure;
-                    //circle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Ellipse)
-                {
-                    var ellipse = (Ellipse)figure;
-                    //ellipse.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Square)
-                {
-                    var square = (Square)figure;
-                    //square.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Triangle)
-                {
-                    var triangle = (Triangle)figure;
-                    //triangle.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-                else if (figure is Rhomb)
-                {
-                    var rhomb = (Rhomb)figure;
-                    //rhomb.Draw(Graphics);
-                    PictureBox.Image = Bitmap;
-                }
-            }
+            PictureBox.Image = Bitmap;
         }
 
     }

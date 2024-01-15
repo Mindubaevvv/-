@@ -13,7 +13,7 @@ namespace Laba_one.Shapes
 
         public void Add(T item)
         {
-            MyList.Append(item);
+            MyList = MyList.Append(item).ToArray();
         }
 
         public T[] ToArray()
