@@ -40,55 +40,6 @@ namespace Laba_one
             DrawRhomb();
         }
 
-        private void DrawShapes(ShapeTypes selectedShape, int count)
-        {
-            switch (selectedShape)
-            {
-                case ShapeTypes.Circle:
-                    CreateCircles(count);
-                    DrawCircle();
-                    break;
-                case ShapeTypes.Ellipse:
-                    CreateEllipses(count);
-                    DrawEllipse();
-                    break;
-                case ShapeTypes.Square:
-                    CreateSquares(count);
-                    DrawSquare();
-                    break;
-                case ShapeTypes.Triangle:
-                    CreateCircles(count);
-                    DrawTriangle();
-                    break;
-                case ShapeTypes.Rhomb:
-                    CreateCircles(count);
-                    DrawRhomb();
-                    break;
-            }
-        }
-        private void DrawWithNewPosition(ShapeTypes selectedShape, Direction direction)
-        {
-            switch (selectedShape)
-            {
-                case ShapeTypes.Circle:
-                    MoveAndDrawCircle(direction);
-                    break;
-                case ShapeTypes.Square:
-                    MoveAndDrawSquare(direction);
-                    break;
-                case ShapeTypes.Triangle:
-                    MoveAndDrawTriangle(direction);
-                    break;
-                case ShapeTypes.Rhomb:
-                    MoveAndDrawRhomb(direction);
-                    break;
-                default:
-                    MoveAndDrawEllipse(direction);
-                    break;
-            }
-
-        }
-
         #region Draw
         private void DrawCircle()
         {
