@@ -27,7 +27,12 @@ namespace Laba_one
             // тут меняем реализацию!
             Figures = new ContainerArr();
             //Figures = new ContainerList();
+            SetFigures();
 
+        }
+
+        private void SetFigures()
+        {
             CreateCircles(3);
             DrawCircle();
             CreateEllipses(3);
@@ -432,6 +437,9 @@ namespace Laba_one
         }
         private void btnAllMassive_Click(object sender, EventArgs e)
         {
+            //Figures = new ContainerArr();            
+            //SetFigures();
+
             if (ShowAllFiguresFlag == true)
             {
                 ShowAllFiguresFlag = false;
@@ -445,7 +453,10 @@ namespace Laba_one
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {         
+            //Figures = new ContainerList();
+            //SetFigures();
+
             if (ShowAllFiguresFlag == true)
             {
                 ShowAllFiguresFlag = false;
